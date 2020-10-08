@@ -5,8 +5,7 @@ line										[\n]
 ws											{delim}+
 %{
 #include "parse.tab.h"
-union YYTYPE; // { int i; char c; char *s; }
-extern union YYTYPE yylval;
+extern union YYSTYPE yylval;
 extern int line_no;
 char *makeString(char *s);
 int checkIdentifier(char *s);
@@ -84,7 +83,7 @@ char *makeString(char *s) {
 	return t;
 }
 
-int checkIdentifer(char *s) {
+int checkIdentifier(char *s) {
 	yylval.s = makeString(s);
 	if (strcmp(s, "int") == 0) {
 		return TYPE_IDENTIFIER;
@@ -105,3 +104,5 @@ int checkIdentifer(char *s) {
 		return IDENTIFIER;
 	}
 }
+
+

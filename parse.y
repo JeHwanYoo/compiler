@@ -1,16 +1,19 @@
 %{
-union YYTYPE {
+union YYSTYPE yylval;
+int line_no;
+void yyerror(char *s);
+int yylex(void);
+int yywrap(void);
+%}
+%union {
 	int i;
 	char c;
 	char *s;
 }
-union YYTYPE yylval;
-int line_no;
-%}
 %token AUTO_SYM BREAK_SYM CASE_SYM CONTINUE_SYM DEFAULT_SYM DO_SYM ELSE_SYM FOR_SYM IF_SYM RETURN_SYM SIZEOF_SYM STATIC_SYM STRUCT_SYM SWITCH_SYM TYPEDEF_SYM UNION_SYM ENUM_SYM WHILE_SYM CONST_SYM
 %token PLUSPLUS MINUSMINUS ARROW LSS GTR LEQ GEQ EQL NEQ AMPAMP BARBAR DOTDOTDOT LP RP LB RB LR RR COLON PERIOD COMMA EXCL STAR SLASH PERCENT AMP SEMICOLON PLUS MINUS ASSIGN
 %token INTEGER_CONSTANT FLOAT_CONSTANT CHARACTER_CONSTANT STRING_CONSTANT STRING_LITERAL
-%token TYPE_IDENTIFER IDENTIFIER
+%token TYPE_IDENTIFIER IDENTIFIER
 %%
 
 program
@@ -54,7 +57,7 @@ init_declarator
 type_specifier
 	: struct_specifier
 	| enum_specifier
-	| TYPE_IDENTIFER
+	| TYPE_IDENTIFIER
 
 struct_specifier
 	: struct_or_union IDENTIFIER LR struct_declaration_list RR
@@ -279,9 +282,20 @@ assignment_expression
 	| unary_expression ASSIGN expression
 
 %%
+#include <stdio.h>
+#include <stdlib.h>
 
 int main(void)
 {
 	yyparse();
-	return 0;
+	exit(0);
+}
+
+void yyerror(char *s) {
+	fprintf(stderr, "%s\n", s);
+	exit(1);
+}
+
+int yywrap() {
+	return 1;
 }
