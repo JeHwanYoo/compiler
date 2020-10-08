@@ -7,8 +7,8 @@ union YYTYPE {
 union YYTYPE yylval;
 int line_no;
 %}
-%token AUTO_SYM BREAK_SYM CASE_SYM CONTINUE_SYM DEFAULT_SYM DO_SYM ELSE_SYM FOR_SYM IF_SYM RETURN_SYM SIZEOF_SYM STATIC_SYM STRUCT_SYM SWITCH_SYM TYPEDEF_SYM UNION_SYM ENUM_SYM WHITE_SYM CONST_SYM
-%token PLUSPLUSH MINUSMINUS ARROW GTR LEQ GEQ EQL NEQ AMPAMP BARBAR DOTDOTDOT LP RP LB RB LR RR COLON PERIOD COMMA EXCL STAR SLASH PERCENT AMP SEMICOLON PLUS MINUS ASSIGN
+%token AUTO_SYM BREAK_SYM CASE_SYM CONTINUE_SYM DEFAULT_SYM DO_SYM ELSE_SYM FOR_SYM IF_SYM RETURN_SYM SIZEOF_SYM STATIC_SYM STRUCT_SYM SWITCH_SYM TYPEDEF_SYM UNION_SYM ENUM_SYM WHILE_SYM CONST_SYM
+%token PLUSPLUS MINUSMINUS ARROW LSS GTR LEQ GEQ EQL NEQ AMPAMP BARBAR DOTDOTDOT LP RP LB RB LR RR COLON PERIOD COMMA EXCL STAR SLASH PERCENT AMP SEMICOLON PLUS MINUS ASSIGN
 %token INTEGER_CONSTANT FLOAT_CONSTANT CHARACTER_CONSTANT STRING_CONSTANT STRING_LITERAL
 %token TYPE_IDENTIFER IDENTIFIER
 %%
@@ -137,6 +137,146 @@ direct_abstract_declarator
 	| LP parameter_type_list_opt RP
 	| direct_abstract_declarator LB constant_expression_opt RB
 	| direct_abstract_declarator LP parameter_type_list_opt RP
+
+initializer
+	: constant_expression
+	| LR initializer_list RR
+
+initializer_list
+	: initializer
+	| initializer_list COMMA initializer
+
+statement
+	: labeled_statement
+	| compound_statement
+	| expression_statement
+	| selection_statement
+	| iteration_statement
+	| jump_statement
+
+labeled_statement
+	: CASE_SYM constant_expression COLON statement
+	| DEFAULT_SYM COLON statement
+
+compound_statement
+	: LR declaration_list statement_list RR
+
+declaration_list
+	: /* empty */
+	| declaration_list declaration
+
+statement_list
+	: /* empty */
+	| statement_list statement
+
+expression_statement
+	: SEMICOLON
+	| expression SEMICOLON
+
+selection_statement
+	: IF_SYM LP expression RP statement
+	| IF_SYM LP expression RP statement ELSE_SYM statement
+	| SWITCH_SYM LP expression RP statement
+
+iteration_statement
+	: WHILE_SYM LP expression RP statement
+	| DO_SYM statement WHILE_SYM LP expression RP SEMICOLON
+	| FOR_SYM LP expression_opt SEMICOLON expression_opt SEMICOLON expression_opt RP statement
+
+expression_opt
+	: /* empty */
+	| expression
+
+jump_statement
+	: RETURN_SYM expression_opt SEMICOLON
+	| CONTINUE_SYM SEMICOLON
+	| BREAK_SYM SEMICOLON
+
+primary_expression
+	: IDENTIFIER
+	| INTEGER_CONSTANT
+	| FLOAT_CONSTANT
+	| CHARACTER_CONSTANT
+	| STRING_LITERAL
+	| LP expression RP
+
+postfix_expression
+	: primary_expression
+	| postfix_expression LB expression RB
+	| postfix_expression LP arg_expression_list_opt RP
+	| postfix_expression PERIOD IDENTIFIER
+	| postfix_expression ARROW IDENTIFIER
+	| postfix_expression PLUSPLUS
+	| postfix_expression MINUSMINUS
+
+arg_expression_list_opt
+	: /* empty */
+	| arg_expression_list
+
+arg_expression_list
+	: assignment_expression
+	| arg_expression_list COMMA assignment_expression
+
+unary_expression
+	: postfix_expression
+	| PLUSPLUS unary_expression
+	| MINUSMINUS unary_expression
+	| AMP cast_expression 
+	| STAR cast_expression
+	| EXCL cast_expression
+	| MINUS cast_expression
+	| PLUS cast_expression
+	| SIZEOF_SYM unary_expression
+	| SIZEOF_SYM LP type_name RP
+
+cast_expression
+	: unary_expression
+	| LP type_name RP cast_expression
+
+type_name
+	: declaration_specifiers
+	| declaration_specifiers abstract_declarator
+
+multiplicative_expression
+	: cast_expression
+	| multiplicative_expression STAR cast_expression
+	| multiplicative_expression SLASH cast_expression
+	| multiplicative_expression PERCENT cast_expression
+
+additive_expression
+	: multiplicative_expression
+	| additive_expression PLUS multiplicative_expression
+	| additive_expression MINUS multiplicative_expression
+
+relational_expression
+	: additive_expression
+	| relational_expression LSS additive_expression
+	| relational_expression GTR additive_expression
+	| relational_expression LEQ additive_expression
+	| relational_expression GEQ additive_expression
+
+equality_expression
+	: relational_expression
+	| relational_expression EQL additive_expression
+	| relational_expression NEQ additive_expression
+
+logical_and_expression
+	: equality_expression
+	| logical_and_expression AMPAMP equality_expression
+
+logical_or_expression
+	: logical_and_expression
+	| logical_or_expression BARBAR logical_and_expression
+
+constant_expression
+	: expression
+
+expression
+	: assignment_expression
+
+assignment_expression
+	: logical_or_expression
+	| unary_expression ASSIGN expression
 
 %%
 

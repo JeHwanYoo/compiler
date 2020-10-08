@@ -4,7 +4,7 @@ delim										[\t]
 line										[\n]
 ws											{delim}+
 %{
-#include "y.tab.h"
+#include "parse.tab.h"
 union YYTYPE; // { int i; char c; char *s; }
 extern union YYTYPE yylval;
 extern int line_no;
@@ -34,6 +34,7 @@ typedef									{ return (SWITCH_SYM); }
 union										{ return (UNION_SYM); }
 while										{ return (WHILE_SYM); }
 const										{ return (CONST_SYM); }
+enum										{ return (ENUM_SYM); }
 
 "\+\+"									{ return (PLUSPLUS); }
 "\-\-"									{ return (MINUSMINUS); }

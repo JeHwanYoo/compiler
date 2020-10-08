@@ -3,7 +3,8 @@ TARGET = syntax_analyzer
 L = lex.l
 Y = parse.y
 YYLEX = lex.yy.c 
-YYPARSE = y.tab.c
+YYPARSE = parse.tab.c
+YYPARSE_H = parse.tab.h
 LEX = flex
 YACC = bison -d
 
@@ -20,7 +21,7 @@ $(YYPARSE): $(Y)
 	$(YACC) $(Y)
 
 clean:
-	$(RM) $(SOURCES) $(TARGET)
+	$(RM) $(YYLEX) $(YYPARSE) $(TARGET)
 
 # test macro
 echo:

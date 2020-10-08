@@ -1,7 +1,7 @@
 tmp
 *.swp
 lex.yy.c
-yy.tab.c
-yy.tab.h
+parse.tab.c
+parse.tab.h
 syntax_analyzer
 
