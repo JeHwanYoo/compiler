@@ -5,7 +5,7 @@ Y = parse.y
 YYLEX = lex.yy.c 
 YYPARSE = parse.tab.c
 YYPARSE_H = parse.tab.h
-LEX = flex
+LEX = flex -d
 YACC = bison -d
 
 # dependencies

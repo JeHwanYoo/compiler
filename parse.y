@@ -10,7 +10,7 @@ int yywrap(void);
 	char c;
 	char *s;
 }
-%token AUTO_SYM BREAK_SYM CASE_SYM CONTINUE_SYM DEFAULT_SYM DO_SYM ELSE_SYM FOR_SYM IF_SYM RETURN_SYM SIZEOF_SYM STATIC_SYM STRUCT_SYM SWITCH_SYM TYPEDEF_SYM UNION_SYM ENUM_SYM WHILE_SYM CONST_SYM
+%token AUTO_SYM BREAK_SYM CASE_SYM CONTINUE_SYM DEFAULT_SYM DO_SYM ELSE_SYM FOR_SYM IF_SYM RETURN_SYM SIZEOF_SYM STATIC_SYM STRUCT_SYM SWITCH_SYM TYPEDEF_SYM UNION_SYM ENUM_SYM WHILE_SYM
 %token PLUSPLUS MINUSMINUS ARROW LSS GTR LEQ GEQ EQL NEQ AMPAMP BARBAR DOTDOTDOT LP RP LB RB LR RR COLON PERIOD COMMA EXCL STAR SLASH PERCENT AMP SEMICOLON PLUS MINUS ASSIGN
 %token INTEGER_CONSTANT FLOAT_CONSTANT CHARACTER_CONSTANT STRING_CONSTANT STRING_LITERAL
 %token TYPE_IDENTIFIER IDENTIFIER
@@ -125,9 +125,10 @@ parameter_list
 	| parameter_list COMMA parameter_declaration
 
 parameter_declaration
-	: declaration_specifiers declaration
+	: declaration_specifiers declarator
 	| declaration_specifiers abstract_declarator
 	| declaration_specifiers
+	| DOTDOTDOT
 
 abstract_declarator
 	: pointer
@@ -280,7 +281,7 @@ expression
 assignment_expression
 	: logical_or_expression
 	| unary_expression ASSIGN expression
-
+	
 %%
 #include <stdio.h>
 #include <stdlib.h>

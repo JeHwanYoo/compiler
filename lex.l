@@ -32,7 +32,6 @@ switch									{ return (SWITCH_SYM); }
 typedef									{ return (SWITCH_SYM); }
 union										{ return (UNION_SYM); }
 while										{ return (WHILE_SYM); }
-const										{ return (CONST_SYM); }
 enum										{ return (ENUM_SYM); }
 
 "\+\+"									{ return (PLUSPLUS); }
@@ -70,7 +69,7 @@ enum										{ return (ENUM_SYM); }
 {digit}+\.{digit}+								{ yylval.s=makeString(yytext); return (FLOAT_CONSTANT); }
 {letter}({letter}|{digit})*				{ return checkIdentifier(yytext); }
 \"(\\["\n]|[^"\n])*\"							{ yylval.s=makeString(yytext); return (STRING_LITERAL); }
-\'(\\['a-zA-z]|[^'\n])\'					{ yylval.c=*(yytext+1); return (CHARACTER_CONSTANT); }
+\'(\\.|[^'\n])\'									{ yylval.c=*(yytext+1); return (CHARACTER_CONSTANT); }
 \/\*([^*\/]|[^*]\/|\*[^\/])*\*\/  { }
 \/\/[^\n]*												{ }
 
