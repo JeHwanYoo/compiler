@@ -4,13 +4,13 @@ void do_something() {
 	a = 2;
 }
 
-int printf(char * format, ...) {
+int printf(char * format) {
 	/* printf */
 	do_something();
 	return 1;
 }
 
-int scanf(char * format, ...) {
+int scanf(char * format) {
 	/* 
 		scanf 
 	*/
@@ -26,9 +26,8 @@ int main(void)
 	scanf("%s", name); // comment
 	scanf("%d", &age); // comment
 
-	printf("Your Name \
-	is \"%s\"\n", name);
-	printf("Your Age is \"%d\"\n", age);
+	printf("Your Name is %s\n", name);
+	printf("Your Age is %d\n", age);
 
 	return 0;
 }

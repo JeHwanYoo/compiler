@@ -61,7 +61,8 @@ int main(int argc, char *argv[])
 	}
 	initialize();
 	yyparse();
-	if (!syntax_err) print_ast(root);
+	printf("parse complete: %d\n", syntax_err);
+	// if (!syntax_err) print_ast(root);
 	exit(0);
 }
 

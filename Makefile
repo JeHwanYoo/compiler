@@ -14,7 +14,7 @@ YACC = bison -d
 all : $(TARGET)
 
 $(TARGET): $(PRINT) $(MAIN) $(YYLEX) $(YYPARSE)
-	$(CC) $^ -o $@
+	$(CC) $^ -o $@ -g
 
 $(YYLEX): $(L) $(T)
 	$(LEX) $(L)
