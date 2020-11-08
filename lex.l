@@ -4,6 +4,7 @@ delim										[\t]
 line										[\n]
 ws											{delim}+
 %{
+#include "type.h"
 #include "parse.tab.h"
 extern union YYSTYPE yylval;
 extern int line_no;
