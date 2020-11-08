@@ -6,8 +6,9 @@ ws											{delim}+
 %{
 #include "type.h"
 #include "parse.tab.h"
-extern union YYSTYPE yylval;
+extern YYSTYPE yylval;
 extern int line_no;
+extern A_ID *current_id;
 char *makeString(char *s);
 int checkIdentifier(char *s);
 %}
@@ -66,11 +67,11 @@ enum										{ return (ENUM_SYM); }
 "\-"										{ return (MINUS); }
 "\="										{ return (ASSIGN); }
 
-{digit}+													{ yylval.i=atoi(yytext); return (INTEGER_CONSTANT); }
-{digit}+\.{digit}+								{ yylval.s=makeString(yytext); return (FLOAT_CONSTANT); }
+{digit}+													{ yylval=atoi(yytext); return (INTEGER_CONSTANT); }
+{digit}+\.{digit}+								{ yylval=makeString(yytext); return (FLOAT_CONSTANT); }
 {letter}({letter}|{digit})*				{ return checkIdentifier(yytext); }
-\"(\\["\n]|[^"\n])*\"							{ yylval.s=makeString(yytext); return (STRING_LITERAL); }
-\'(\\.|[^'\n])\'									{ yylval.c=*(yytext+1); return (CHARACTER_CONSTANT); }
+\"(\\["\n]|[^"\n])*\"							{ yylval=makeString(yytext); return (STRING_LITERAL); }
+\'(\\.|[^'\n])\'									{ yylval=*(yytext+1); return (CHARACTER_CONSTANT); }
 \/\*([^*\/]|[^*]\/|\*[^\/])*\*\/  { }
 \/\/[^\n]*												{ }
 
@@ -84,23 +85,24 @@ char *makeString(char *s) {
 }
 
 int checkIdentifier(char *s) {
-	yylval.s = makeString(s);
-	if (strcmp(s, "int") == 0) {
-		return TYPE_IDENTIFIER;
+	A_ID *id;
+	char *t;
+	id=current_id;
+	while (id) {
+		if (strcmp(id->name,s)==0)
+			break;
+		id=id->prev;
 	}
-	else if (strcmp(s, "char") == 0) {
-		return TYPE_IDENTIFIER;
+	if (id==0) {
+		yylval = makeString(s);
+		return IDENTIFIER;
 	}
-	else if (strcmp(s, "void") == 0) {
-		return TYPE_IDENTIFIER;
-	}
-	else if (strcmp(s, "float") == 0) {
-		return TYPE_IDENTIFIER;
-	}
-	else if (strcmp(s, "double") == 0) {
+	else if (id->kind==ID_TYPE) {
+		yylval = id->type;
 		return TYPE_IDENTIFIER;
 	}
 	else {
+		yylval = id->name;
 		return IDENTIFIER;
 	}
 }

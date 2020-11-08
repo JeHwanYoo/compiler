@@ -6,13 +6,14 @@ T = type.h
 YYLEX = lex.yy.c 
 YYPARSE = parse.tab.c
 PRINT = print.c
+MAIN = main.c
 LEX = flex -d
 YACC = bison -d
 
 # dependencies
 all : $(TARGET)
 
-$(TARGET): $(PRINT) $(YYLEX) $(YYPARSE)
+$(TARGET): $(PRINT) $(MAIN) $(YYLEX) $(YYPARSE)
 	$(CC) $^ -o $@
 
 $(YYLEX): $(L) $(T)

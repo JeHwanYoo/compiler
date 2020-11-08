@@ -3,7 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-union YYSTYPE yylval;
+#define YYSTYPE_IS_DECLARED 1
+typedef long long YYSTYPE;
 extern int line_no, syntax_err;
 extern A_NODE *root;
 extern A_ID *current_id;
@@ -13,46 +14,8 @@ void yyerror(char *s);
 int yylex(void);
 int yywrap(void);
 
-extern A_NODE			*makeNode(NODE_NAME,A_NODE*,A_NODE*,A_NODE*);			
-extern A_NODE			*makeNodeList(NODE_NAME,A_NODE*,A_NODE*);				
-extern A_ID				*makeIdentifier(char *);																				
-extern A_ID				*makeDummyIdentifier();																				
-extern A_TYPE			*makeType(T_KIND);																					
-extern A_SPECIFIER *makeSpecifier(A_TYPE*,S_KIND);														
-extern A_ID				*searchIdentifier(char*,A_ID*);							
-extern A_ID				*searchIdentifierAtCurrentLevel(char*,A_ID*); 
-extern A_SPECIFIER *updateSpecifier(A_SPECIFIER*,A_TYPE*,S_KIND);
-extern void				checkForwardReference();
-extern void				setDefaultSpecifier(A_SPECIFIER*);
-extern A_ID				*linkDeclaratorList(A_ID*,A_ID*);
-extern A_ID				*getIdentifierDeclared(char*);
-extern A_TYPE			*getTypeOfStructOrEnumRefIdentifier(T_KIND,char*,ID_KIND);
-extern A_ID				*setDeclaratorInit(A_ID*,A_NODE*);
-extern A_ID				*setDeclaratorKind(A_ID*,ID_KIND);
-extern A_ID				*setDeclaratorType(A_ID*,A_TYPE*);
-extern A_ID				*setDeclaratorElementType(A_ID*,A_TYPE*);
-extern A_ID				*setDeclaratorTypeAndKind(A_ID*,A_TYPE*,ID_KIND);
-extern A_ID				*setDeclaratorListSpecifier(A_ID*,A_SPECIFIER*);
-extern A_ID				*setFunctionDeclaratorSpecifier(A_ID*,A_SPECIFIER*);
-extern A_ID				*setFunctionDeclaratorBody(A_ID*,A_NODE*);
-extern A_ID				*setParameterDeclaratorSpecifier(A_ID*,A_SPECIFIER*);
-extern A_ID				*setStructDeclaratorListSpecifier(A_ID*,A_TYPE*);
-extern A_TYPE			*setTypeNameSpecifier(A_TYPE*,A_SPECIFIER*);
-extern A_TYPE			*setTypeElementType(A_TYPE*,A_TYPE*);
-extern A_TYPE			*setTypeField(A_TYPE*,A_ID*);
-extern A_TYPE			*setTypeExpr(A_TYPE*,A_NODE*);
-extern A_TYPE			*setTypeAndKindOfDeclarator(A_TYPE*,ID_KIND,A_ID*);
-extern A_TYPE			*setTypeStructOrEnumIdentifier(T_KIND,char*,ID_KIND);
-extern BOOLEAN			isNotSameFormalParameters(A_ID*,A_ID*);
-extern BOOLEAN			isNotSameType(A_TYPE*,A_TYPE*);
-extern BOOLEAN			isPointerOrArrayType(A_TYPE*);
-
 %}
-%union {
-	int i;
-	char c;
-	char *s;
-}
+%start program
 %token AUTO_SYM BREAK_SYM CASE_SYM CONTINUE_SYM DEFAULT_SYM DO_SYM ELSE_SYM FOR_SYM IF_SYM RETURN_SYM SIZEOF_SYM STATIC_SYM STRUCT_SYM SWITCH_SYM TYPEDEF_SYM UNION_SYM ENUM_SYM WHILE_SYM
 %token PLUSPLUS MINUSMINUS ARROW LSS GTR LEQ GEQ EQL NEQ AMPAMP BARBAR DOTDOTDOT LP RP LB RB LR RR COLON PERIOD COMMA EXCL STAR SLASH PERCENT AMP SEMICOLON PLUS MINUS ASSIGN
 %token INTEGER_CONSTANT FLOAT_CONSTANT CHARACTER_CONSTANT STRING_CONSTANT STRING_LITERAL
@@ -60,15 +23,19 @@ extern BOOLEAN			isPointerOrArrayType(A_TYPE*);
 %%
 
 program
-	: translation_unit { root = makeNode(N_PROGRAM,NIL,$1,NIL); checkForwardReference(); }
+	: translation_unit 
+	{ root = makeNode(N_PROGRAM,NIL,$1,NIL); checkForwardReference(); }
+	;
 
 translation_unit
 	: external_declaration { $$ = $1; }
 	| translation_unit external_declaration { $$ = linkDeclaratorList($1,$2); } 
+	;
 
 external_declaration
 	: function_definition { $$ = $1; }
-	| declaration { $$ = $1; } 
+	| declaration { $$ = $1; }
+	;
 
 function_definition
 	: declaration_specifiers declarator { $$=setFunctionDeclaratorSpecifier($2,$1); }
@@ -175,7 +142,7 @@ parameter_type_list_opt
 
 parameter_type_list
 	: parameter_list																	{$$=$1;}
-	| parameter_list COMMA DOTDOTDOT									{$$=linkDeclaratorList($1,setDeclaratorKind(makeDummyIdentifier(),ID_PARAM));}
+	| parameter_list COMMA DOTDOTDOT									{$$=linkDeclaratorList($1,setDeclaratorKind(makeDummyIdentifier(),ID_PARM));}
 
 parameter_list
 	: parameter_declaration														{$$=$1;}
@@ -222,8 +189,8 @@ labeled_statement
 	| DEFAULT_SYM COLON statement											{$$=makeNode(N_STMT_LABEL_DEFAULT,NIL,$3,NIL);}
 
 compound_statement
-	: LR																	{$$=current_id; current_level++;}
-	declaration_list statement_list RR		{checkForwardReference(); $$=makeNode(N_STMT_COMPOUND,$3,NIL,$4); current_id=$2; current_level--;}
+	: LR																					{$$=current_id; current_level++;}
+	declaration_list_opt statement_list_opt RR		{checkForwardReference(); $$=makeNode(N_STMT_COMPOUND,$3,NIL,$4); current_id=$2; current_level--;}
 
 declaration_list_opt
 	: /* empty */				{$$=NIL;}
@@ -233,7 +200,7 @@ declaration_list
 	: declaration										{$$=$1;}
 	| declaration_list declaration	{$$=linkDeclaratorList($1,$2);}
 
-statement_lsit_opt
+statement_list_opt
 	: /* empty */			{$$=makeNode(N_STMT_LIST_NIL,NIL,NIL,NIL);}
 	| statement_list	{$$=$1;}
 
@@ -272,7 +239,7 @@ primary_expression
 	| INTEGER_CONSTANT																		{$$=makeNode(N_EXP_INT_CONST,NIL,$1,NIL);}
 	| FLOAT_CONSTANT																			{$$=makeNode(N_EXP_FLOAT_CONST,NIL,$1,NIL);}
 	| CHARACTER_CONSTANT																	{$$=makeNode(N_EXP_CHAR_CONST,NIL,$1,NIL);}
-	| STRING_LITERAL																			{$$=makeNode(N_EXP_STRING_CONST,NIL,$1,NIL);}
+	| STRING_LITERAL																			{$$=makeNode(N_EXP_STRING_LITERAL,NIL,$1,NIL);}
 	| LP expression RP																		{$$=$2;}
 
 postfix_expression
@@ -324,7 +291,7 @@ additive_expression
 
 relational_expression
 	: additive_expression																		{$$=$1;}
-	| relational_expression LSS shift_expression						{$$=makeNode(N_EXP_LESS,$1,NIL,$3);}
+	| relational_expression LSS shift_expression						{$$=makeNode(N_EXP_LSS,$1,NIL,$3);}
 	| relational_expression GTR shift_expression						{$$=makeNode(N_EXP_GTR,$1,NIL,$3);}
 	| relational_expression LEQ shift_expression						{$$=makeNode(N_EXP_LEQ,$1,NIL,$3);}
 	| relational_expression GEQ shift_expression						{$$=makeNode(N_EXP_GEQ,$1,NIL,$3);}
