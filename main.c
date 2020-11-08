@@ -239,7 +239,7 @@ A_TYPE			*getTypeOfStructOrEnumRefIdentifier(T_KIND k,char *s,ID_KIND kk) {
 			syntax_error(11,s);
 	t = makeType(k);
 	id = makeIdentifier(s);
-	id->kind = k;
+	id->kind = kk;
 	id->type = t;
 	return t;
 }
@@ -427,7 +427,7 @@ BOOLEAN			isNotSameType(A_TYPE *t1,A_TYPE *t2) {
 		return t1!=t2;
 }
 BOOLEAN			isPointerOrArrayType(A_TYPE *t) {
-	if (t->kind == T_POINTER || t->kind == T_ARRAY) {
+	if (t && (t->kind == T_POINTER || t->kind == T_ARRAY)) {
 		return TRUE;
 	} else {
 		return FALSE;
