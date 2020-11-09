@@ -25,23 +25,20 @@ int yywrap(void);
 program
 	: translation_unit 
 	{ root = makeNode(N_PROGRAM,NIL,$1,NIL); checkForwardReference(); }
-	;
 
 translation_unit
 	: external_declaration { $$ = $1; }
 	| translation_unit external_declaration { $$ = linkDeclaratorList($1,$2); } 
-	;
 
 external_declaration
 	: function_definition { $$ = $1; }
 	| declaration { $$ = $1; }
-	;
 
 function_definition
 	: declaration_specifiers declarator { $$=setFunctionDeclaratorSpecifier($2,$1); }
-	compound_statement { $$=setFunctionDeclaratorBody($3,$4); }
+	compound_statement { $$=setFunctionDeclaratorBody($3,$4); current_id=$2; }
 	| declarator { $$=setFunctionDeclaratorSpecifier($1,makeSpecifier(int_type,0)); }
-	compound_statement { $$=setFunctionDeclaratorBody($2,$3); }
+	compound_statement { $$=setFunctionDeclaratorBody($2,$3); current_id=$1; }
 
 declaration
 	: declaration_specifiers init_declarator_list_opt SEMICOLON { $$=setDeclaratorListSpecifier($2,$1); }
@@ -157,15 +154,15 @@ abstract_declarator_opt
 	| abstract_declarator															{$$=$1;}
 
 abstract_declarator
-	: pointer																					{$$=$1;}
-	| direct_abstract_declarator											{$$=makeType(T_POINTER);}
+	: direct_abstract_declarator											{$$=$1;}
+	| pointer																					{$$=makeType(T_POINTER);}
 	| pointer direct_abstract_declarator							{$$=setTypeElementType($2,makeType(T_POINTER));}
 
 direct_abstract_declarator
 	: LP abstract_declarator RP												{$$=$2;}
 	| LB constant_expression_opt RB										{$$=setTypeExpr(makeType(T_ARRAY),$2);}
-	| LP parameter_type_list_opt RP										{$$=setTypeExpr(makeType(T_FUNC),$2);}
 	| direct_abstract_declarator LB constant_expression_opt RB	{$$=setTypeElementType($1,setTypeExpr(makeType(T_ARRAY),$3));}
+	| LP parameter_type_list_opt RP										{$$=setTypeExpr(makeType(T_FUNC),$2);}
 	| direct_abstract_declarator LP parameter_type_list_opt RP	{$$=setTypeElementType($1,setTypeExpr(makeType(T_FUNC),$3));}
 
 initializer
@@ -332,7 +329,7 @@ comma_expression
 
 assignment_expression
 	: conditional_expression																{$$=$1;}
-	| unary_expression ASSIGN expression										{$$=makeNode(N_EXP_ASSIGN,$1,NIL,$3);}
+	| unary_expression ASSIGN assignment_expression					{$$=makeNode(N_EXP_ASSIGN,$1,NIL,$3);}
 
 conditional_expression
 	: logical_or_expression																	{$$=$1;}
