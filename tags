@@ -8,6 +8,8 @@
 $(TARGET)	Makefile	/^$(TARGET): $(PRINT) $(MAIN) $(YYLEX) $(YYPARSE)$/;"	t
 $(YYLEX)	Makefile	/^$(YYLEX): $(L) $(T)$/;"	t
 $(YYPARSE)	Makefile	/^$(YYPARSE): $(Y) $(T)$/;"	t
+A	test3.c	/^	A$/;"	e	enum:foo	file:
+ABC	test3.c	/^int ABC() {$/;"	f	typeref:typename:int
 AMP	parse.tab.c	/^    AMP = 301,$/;"	e	enum:yytokentype	file:
 AMP	parse.tab.h	/^    AMP = 301,$/;"	e	enum:yytokentype
 AMP	tmp/y.tab.h	/^	AMP,$/;"	e	enum:__anon3e7130b90103
@@ -357,11 +359,11 @@ YYSTACK_GAP_MAXIMUM	parse.tab.c	/^# define YYSTACK_GAP_MAXIMUM /;"	d	file:
 YYSTACK_RELOCATE	parse.tab.c	/^# define YYSTACK_RELOCATE(/;"	d	file:
 YYSTATE	lex.yy.c	/^#define YYSTATE /;"	d	file:
 YYSTYPE	parse.tab.c	/^typedef int YYSTYPE;$/;"	t	typeref:typename:int	file:
-YYSTYPE	parse.tab.c	/^typedef long long YYSTYPE;$/;"	t	typeref:typename:long long	file:
 YYSTYPE	parse.tab.h	/^typedef int YYSTYPE;$/;"	t	typeref:typename:int
+YYSTYPE	type.h	/^typedef long YYSTYPE;$/;"	t	typeref:typename:long
 YYSTYPE_IS_DECLARED	parse.tab.c	/^# define YYSTYPE_IS_DECLARED /;"	d	file:
-YYSTYPE_IS_DECLARED	parse.tab.c	/^#define YYSTYPE_IS_DECLARED /;"	d	file:
 YYSTYPE_IS_DECLARED	parse.tab.h	/^# define YYSTYPE_IS_DECLARED /;"	d
+YYSTYPE_IS_DECLARED	type.h	/^#define YYSTYPE_IS_DECLARED /;"	d
 YYSTYPE_IS_TRIVIAL	parse.tab.c	/^# define YYSTYPE_IS_TRIVIAL /;"	d	file:
 YYSTYPE_IS_TRIVIAL	parse.tab.h	/^# define YYSTYPE_IS_TRIVIAL /;"	d
 YYSYNTAX_ERROR	parse.tab.c	/^# define YYSYNTAX_ERROR /;"	d	file:
@@ -455,7 +457,6 @@ __anon1f42211d060a	type.h	/^	typedef union {int i; float f; char c; char *s;} LI
 __anon1f42211d0708	type.h	/^	typedef struct {$/;"	s
 __anon3e7130b90103	tmp/y.tab.h	/^typedef enum {$/;"	g
 __anon9f683cd60103	parse.tab.c	/^  enum { YYERROR_VERBOSE_ARGS_MAXIMUM = 5 };$/;"	g	function:yysyntax_error	file:
-a	test3.c	/^int a = 5;$/;"	v	typeref:typename:int
 abstract_declarator	parse.y	/^abstract_declarator$/;"	l
 abstract_declarator_opt	parse.y	/^abstract_declarator_opt$/;"	l
 additive_expression	parse.y	/^additive_expression$/;"	l
@@ -484,7 +485,7 @@ conditional_expression	parse.y	/^conditional_expression$/;"	l
 constant_expression	parse.y	/^constant_expression$/;"	l
 constant_expression_opt	parse.y	/^constant_expression_opt$/;"	l
 current_id	main.c	/^A_ID *current_id = NIL;$/;"	v	typeref:typename:A_ID *
-current_level	main.c	/^int syntax_err = 0, line_no = 1, current_level=0;$/;"	v	typeref:typename:int
+current_level	main.c	/^int syntax_err = 0, line_no = 0, current_level=0;$/;"	v	typeref:typename:int
 declaration	parse.y	/^declaration$/;"	l
 declaration_list	parse.y	/^declaration_list$/;"	l
 declaration_list_opt	parse.y	/^declaration_list_opt$/;"	l
@@ -520,12 +521,14 @@ flex_uint32_t	lex.yy.c	/^typedef unsigned int flex_uint32_t;$/;"	t	typeref:typen
 flex_uint8_t	lex.yy.c	/^typedef uint8_t flex_uint8_t;$/;"	t	typeref:typename:uint8_t	file:
 flex_uint8_t	lex.yy.c	/^typedef unsigned char flex_uint8_t; $/;"	t	typeref:typename:unsigned char	file:
 float_type	main.c	/^A_TYPE *float_type;$/;"	v	typeref:typename:A_TYPE *
+foo	test3.c	/^enum foo {$/;"	g	file:
 for_expression	parse.y	/^for_expression$/;"	l
 func3	test2.c	/^func3() { $/;"	f
 func4	test2.c	/^int func4(char *s) {$/;"	f	typeref:typename:int
 function_definition	parse.y	/^function_definition$/;"	l
 getIdentifierDeclared	main.c	/^A_ID				*getIdentifierDeclared(char *s) {$/;"	f	typeref:typename:A_ID *
 getTypeOfStructOrEnumRefIdentifier	main.c	/^A_TYPE			*getTypeOfStructOrEnumRefIdentifier(T_KIND k,char *s,ID_KIND kk) {$/;"	f	typeref:typename:A_TYPE *
+hello	test3.c	/^struct hello {$/;"	s	file:
 i	type.h	/^	typedef union {int i; float f; char c; char *s;} LIT_VALUE;$/;"	m	union:__anon1f42211d060a	typeref:typename:int
 id_kind_name	print.c	/^char *id_kind_name[] = {"NULL", "VAR", "FUNC", "PARM", "FIELD", "TYPE", "ENUM",$/;"	v	typeref:typename:char * []
 init	type.h	/^	A_NODE *init;$/;"	m	struct:s_id	typeref:typename:A_NODE *
@@ -537,6 +540,7 @@ initializer	parse.y	/^initializer$/;"	l
 initializer_list	parse.y	/^initializer_list$/;"	l
 int_type	main.c	/^A_TYPE *int_type;$/;"	v	typeref:typename:A_TYPE *
 intval	test2.c	/^int intval = 5;$/;"	v	typeref:typename:int
+is	test3.c	/^	char is;$/;"	m	struct:hello	typeref:typename:char	file:
 isNotSameFormalParameters	main.c	/^BOOLEAN			isNotSameFormalParameters(A_ID *a,A_ID *b) {$/;"	f	typeref:typename:BOOLEAN
 isNotSameType	main.c	/^BOOLEAN			isNotSameType(A_TYPE *t1,A_TYPE *t2) {$/;"	f	typeref:typename:BOOLEAN
 isPointerOrArrayType	main.c	/^BOOLEAN			isPointerOrArrayType(A_TYPE *t) {$/;"	f	typeref:typename:BOOLEAN
@@ -550,7 +554,7 @@ line	type.h	/^		int line;$/;"	m	struct:__anon1f42211d0708	typeref:typename:int
 line	type.h	/^	int line;$/;"	m	struct:s_id	typeref:typename:int
 line	type.h	/^	int line;$/;"	m	struct:s_node	typeref:typename:int
 line	type.h	/^	int line;$/;"	m	struct:s_type	typeref:typename:int
-line_no	main.c	/^int syntax_err = 0, line_no = 1, current_level=0;$/;"	v	typeref:typename:int
+line_no	main.c	/^int syntax_err = 0, line_no = 0, current_level=0;$/;"	v	typeref:typename:int
 link	type.h	/^	struct s_id *link;} A_ID;$/;"	m	struct:s_id	typeref:struct:s_id *
 linkDeclaratorList	main.c	/^A_ID				*linkDeclaratorList(A_ID *id1,A_ID *id2) {$/;"	f	typeref:typename:A_ID *
 lit	type.h	/^	typedef struct lit {int addr; A_TYPE *type; LIT_VALUE value;} A_LITERAL;$/;"	s
@@ -567,6 +571,7 @@ makeNodeList	main.c	/^A_NODE			*makeNodeList(NODE_NAME n,A_NODE *a,A_NODE *b) {$
 makeSpecifier	main.c	/^A_SPECIFIER *makeSpecifier(A_TYPE *t,S_KIND s) {$/;"	f	typeref:typename:A_SPECIFIER *
 makeString	lex.yy.c	/^char *makeString(char *s) {$/;"	f	typeref:typename:char *
 makeType	main.c	/^A_TYPE			*makeType(T_KIND k) {$/;"	f	typeref:typename:A_TYPE *
+mine	test3.c	/^	float mine;$/;"	m	struct:hello	typeref:typename:float	file:
 multiplicative_expression	parse.y	/^multiplicative_expression$/;"	l
 name	type.h	/^	NODE_NAME name;$/;"	m	struct:s_node	typeref:typename:NODE_NAME
 name	type.h	/^	char *name;$/;"	m	struct:s_id	typeref:typename:char *
@@ -642,8 +647,8 @@ struct_declaration_list	parse.y	/^struct_declaration_list$/;"	l
 struct_declarator	parse.y	/^struct_declarator$/;"	l
 struct_declarator_list	parse.y	/^struct_declarator_list$/;"	l
 struct_or_union	parse.y	/^struct_or_union$/;"	l
-struct_specifier	parse.y	/^struct_specifier$/;"	l
-syntax_err	main.c	/^int syntax_err = 0, line_no = 1, current_level=0;$/;"	v	typeref:typename:int
+struct_type_specifier	parse.y	/^struct_type_specifier$/;"	l
+syntax_err	main.c	/^int syntax_err = 0, line_no = 0, current_level=0;$/;"	v	typeref:typename:int
 syntax_error	main.c	/^void syntax_error(int i, char *s) {$/;"	f	typeref:typename:void
 translation_unit	parse.y	/^translation_unit$/;"	l
 type	type.h	/^		A_TYPE *type;$/;"	m	struct:__anon1f42211d0708	typeref:typename:A_TYPE *
@@ -656,10 +661,12 @@ type_specifier	parse.y	/^type_specifier$/;"	l
 unary_expression	parse.y	/^unary_expression$/;"	l
 unput	lex.yy.c	/^#define unput(/;"	d	file:
 updateSpecifier	main.c	/^A_SPECIFIER *updateSpecifier(A_SPECIFIER *p,A_TYPE *t,S_KIND s) {$/;"	f	typeref:typename:A_SPECIFIER *
+val	test3.c	/^int val;$/;"	v	typeref:typename:int
 value	type.h	/^	int value;$/;"	m	struct:s_id	typeref:typename:int
 value	type.h	/^	int value;$/;"	m	struct:s_node	typeref:typename:int
 value	type.h	/^	typedef struct lit {int addr; A_TYPE *type; LIT_VALUE value;} A_LITERAL;$/;"	m	struct:lit	typeref:typename:LIT_VALUE
 void_type	main.c	/^A_TYPE *void_type;$/;"	v	typeref:typename:A_TYPE *
+world	test3.c	/^	int world;$/;"	m	struct:hello	typeref:typename:int	file:
 yy_accept	lex.yy.c	/^static const flex_int16_t yy_accept[148] =$/;"	v	typeref:typename:const flex_int16_t[148]	file:
 yy_act	lex.yy.c	/^	int yy_act;$/;"	v	typeref:typename:int
 yy_amount_of_matched_text	lex.yy.c	/^		int yy_amount_of_matched_text = (int) (yy_cp - (yytext_ptr)) - 1;$/;"	v	typeref:typename:int

@@ -6,6 +6,7 @@ ws											{delim}+
 %{
 #include "type.h"
 #include "parse.tab.h"
+#include "stdio.h"
 extern YYSTYPE yylval;
 extern int line_no;
 extern A_ID *current_id;
@@ -31,7 +32,7 @@ sizeof									{ return (SIZEOF_SYM); }
 static									{ return (STATIC_SYM); }
 struct									{ return (STRUCT_SYM); }
 switch									{ return (SWITCH_SYM); }
-typedef									{ return (SWITCH_SYM); }
+typedef									{ return (TYPEDEF_SYM); }
 union										{ return (UNION_SYM); }
 while										{ return (WHILE_SYM); }
 enum										{ return (ENUM_SYM); }
@@ -99,6 +100,7 @@ int checkIdentifier(char *s) {
 	}
 	else if (id->kind==ID_TYPE) {
 		yylval = (YYSTYPE)id->type;
+		printf("%s\n", (char *)yylval);
 		return TYPE_IDENTIFIER;
 	}
 	else {

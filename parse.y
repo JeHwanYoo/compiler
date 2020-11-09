@@ -99,11 +99,11 @@ init_declarator
 	| declarator ASSIGN initializer										{$$=setDeclaratorInit($1,$3);}
 
 type_specifier
-	: struct_specifier																{$$=$1;}
+	: struct_type_specifier														{$$=$1;}
 	| enum_specifier																	{$$=$1;}
 	| TYPE_IDENTIFIER																	{$$=$1;}
 
-struct_specifier
+struct_type_specifier
 	: struct_or_union IDENTIFIER											{$$=setTypeStructOrEnumIdentifier($1,$2,ID_STRUCT);}
 	LR																								{$$=current_id; current_level++;} 
 	struct_declaration_list RR												{checkForwardReference(); $$=setTypeField($3,$6); current_level--; current_id=$5;}
@@ -308,13 +308,13 @@ type_name
 	: declaration_specifiers abstract_declarator_opt				{$$=setTypeNameSpecifier($2,$1);}
 
 multiplicative_expression
-	: cast_expression																				{$$=1;}
+	: cast_expression																				{$$=$1;}
 	| multiplicative_expression STAR cast_expression				{$$=makeNode(N_EXP_MUL,$1,NIL,$3);}
 	| multiplicative_expression SLASH cast_expression				{$$=makeNode(N_EXP_DIV,$1,NIL,$3);}
 	| multiplicative_expression PERCENT cast_expression			{$$=makeNode(N_EXP_MOD,$1,NIL,$3);}
 
 additive_expression
-	: multiplicative_expression															{$$=1;}
+	: multiplicative_expression															{$$=$1;}
 	| additive_expression PLUS multiplicative_expression		{$$=makeNode(N_EXP_ADD,$1,NIL,$3);}
 	| additive_expression MINUS multiplicative_expression		{$$=makeNode(N_EXP_SUB,$1,NIL,$3);}
 
@@ -371,7 +371,6 @@ conditional_expression
 void yyerror(char *s) {
 	syntax_err++;
 	fprintf(stderr, "%s\n", s);
-	// exit(1);
 }
 
 int yywrap() {

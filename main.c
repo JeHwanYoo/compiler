@@ -10,7 +10,7 @@ A_TYPE *float_type;
 A_TYPE *char_type;
 A_TYPE *string_type;
 A_TYPE *void_type;
-int syntax_err = 0, line_no = 1, current_level=0;
+int syntax_err = 0, line_no = 0, current_level=0;
 extern char *yytext;
 extern FILE *yyin;
 extern char *yytext;
