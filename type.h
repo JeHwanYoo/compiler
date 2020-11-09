@@ -106,4 +106,8 @@ typedef struct s_id {
 		S_KIND stor;
 		int line;
 	} A_SPECIFIER;
+
+#define YYSTYPE_IS_DECLARED 1
+typedef long YYSTYPE;
+
 #endif

@@ -68,10 +68,10 @@ enum										{ return (ENUM_SYM); }
 "\="										{ return (ASSIGN); }
 
 {digit}+													{ yylval=atoi(yytext); return (INTEGER_CONSTANT); }
-{digit}+\.{digit}+								{ yylval=makeString(yytext); return (FLOAT_CONSTANT); }
+{digit}+\.{digit}+								{ yylval=(YYSTYPE)makeString(yytext); return (FLOAT_CONSTANT); }
 {letter}({letter}|{digit})*				{ return checkIdentifier(yytext); }
-\"(\\["\n]|[^"\n])*\"							{ yylval=makeString(yytext); return (STRING_LITERAL); }
-\'(\\.|[^'\n])\'									{ yylval=*(yytext+1); return (CHARACTER_CONSTANT); }
+\"(\\["\n]|[^"\n])*\"							{ yylval=(YYSTYPE)makeString(yytext); return (STRING_LITERAL); }
+\'(\\.|[^'\n])\'									{ yylval=(YYSTYPE)*(yytext+1); return (CHARACTER_CONSTANT); }
 \/\*([^*\/]|[^*]\/|\*[^\/])*\*\/  { }
 \/\/[^\n]*												{ }
 
@@ -94,15 +94,15 @@ int checkIdentifier(char *s) {
 		id=id->prev;
 	}
 	if (id==0) {
-		yylval = makeString(s);
+		yylval = (YYSTYPE)makeString(s);
 		return IDENTIFIER;
 	}
 	else if (id->kind==ID_TYPE) {
-		yylval = id->type;
+		yylval = (YYSTYPE)id->type;
 		return TYPE_IDENTIFIER;
 	}
 	else {
-		yylval = id->name;
+		yylval = (YYSTYPE)id->name;
 		return IDENTIFIER;
 	}
 }

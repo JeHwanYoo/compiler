@@ -3,8 +3,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define YYSTYPE_IS_DECLARED 1
-typedef long long YYSTYPE;
 extern int line_no, syntax_err;
 extern A_NODE *root;
 extern A_ID *current_id;
@@ -13,6 +11,40 @@ extern A_TYPE *int_type;
 void yyerror(char *s);
 int yylex(void);
 int yywrap(void);
+
+extern A_NODE			*makeNode(NODE_NAME,A_NODE*,A_NODE*,A_NODE*);			
+extern A_NODE			*makeNodeList(NODE_NAME,A_NODE*,A_NODE*);				
+extern A_ID				*makeIdentifier(char *);																				
+extern A_ID				*makeDummyIdentifier();																				
+extern A_TYPE			*makeType(T_KIND);																					
+extern A_SPECIFIER *makeSpecifier(A_TYPE*,S_KIND);														
+extern A_ID				*searchIdentifier(char*,A_ID*);							
+extern A_ID				*searchIdentifierAtCurrentLevel(char*,A_ID*); 
+extern A_SPECIFIER *updateSpecifier(A_SPECIFIER*,A_TYPE*,S_KIND);
+extern void				checkForwardReference();
+extern void				setDefaultSpecifier(A_SPECIFIER*);
+extern A_ID				*linkDeclaratorList(A_ID*,A_ID*);
+extern A_ID				*getIdentifierDeclared(char*);
+extern A_TYPE			*getTypeOfStructOrEnumRefIdentifier(T_KIND,char*,ID_KIND);
+extern A_ID				*setDeclaratorInit(A_ID*,A_NODE*);
+extern A_ID				*setDeclaratorKind(A_ID*,ID_KIND);
+extern A_ID				*setDeclaratorType(A_ID*,A_TYPE*);
+extern A_ID				*setDeclaratorElementType(A_ID*,A_TYPE*);
+extern A_ID				*setDeclaratorTypeAndKind(A_ID*,A_TYPE*,ID_KIND);
+extern A_ID				*setDeclaratorListSpecifier(A_ID*,A_SPECIFIER*);
+extern A_ID				*setFunctionDeclaratorSpecifier(A_ID*,A_SPECIFIER*);
+extern A_ID				*setFunctionDeclaratorBody(A_ID*,A_NODE*);
+extern A_ID				*setParameterDeclaratorSpecifier(A_ID*,A_SPECIFIER*);
+extern A_ID				*setStructDeclaratorListSpecifier(A_ID*,A_TYPE*);
+extern A_TYPE			*setTypeNameSpecifier(A_TYPE*,A_SPECIFIER*);
+extern A_TYPE			*setTypeElementType(A_TYPE*,A_TYPE*);
+extern A_TYPE			*setTypeField(A_TYPE*,A_ID*);
+extern A_TYPE			*setTypeExpr(A_TYPE*,A_NODE*);
+extern A_TYPE			*setTypeAndKindOfDeclarator(A_TYPE*,ID_KIND,A_ID*);
+extern A_TYPE			*setTypeStructOrEnumIdentifier(T_KIND,char*,ID_KIND);
+extern BOOLEAN			isNotSameFormalParameters(A_ID*,A_ID*);
+extern BOOLEAN			isNotSameType(A_TYPE*,A_TYPE*);
+extern BOOLEAN			isPointerOrArrayType(A_TYPE*);
 
 %}
 %start program
@@ -36,9 +68,9 @@ external_declaration
 
 function_definition
 	: declaration_specifiers declarator { $$=setFunctionDeclaratorSpecifier($2,$1); }
-	compound_statement { $$=setFunctionDeclaratorBody($3,$4); current_id=$2; }
+	compound_statement { $$=setFunctionDeclaratorBody($3,$4); }
 	| declarator { $$=setFunctionDeclaratorSpecifier($1,makeSpecifier(int_type,0)); }
-	compound_statement { $$=setFunctionDeclaratorBody($2,$3); current_id=$1; }
+	compound_statement { $$=setFunctionDeclaratorBody($2,$3); }
 
 declaration
 	: declaration_specifiers init_declarator_list_opt SEMICOLON { $$=setDeclaratorListSpecifier($2,$1); }
