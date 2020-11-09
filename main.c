@@ -10,7 +10,7 @@ A_TYPE *float_type;
 A_TYPE *char_type;
 A_TYPE *string_type;
 A_TYPE *void_type;
-int syntax_err = 0, line_no = 0, current_level=0;
+int syntax_err = 0, line_no = 1, current_level=0;
 extern char *yytext;
 extern FILE *yyin;
 extern char *yytext;
@@ -61,8 +61,11 @@ int main(int argc, char *argv[])
 	}
 	initialize();
 	yyparse();
-	printf("parse complete: %d\n", syntax_err);
-	if (!syntax_err) print_ast(root);
+	if (!syntax_err) {
+		printf("syntax check ok\n");
+		print_ast(root);
+	}
+	else printf("the number of error: %d\n", syntax_err);
 	exit(0);
 }
 

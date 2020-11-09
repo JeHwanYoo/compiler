@@ -1,33 +1,44 @@
-void do_something() {
-	/* do someting */
-	int a;
-	a = 2;
-}
+// 전역 변수 선언
+int val = 3;
 
-int printf(char * format) {
-	/* printf */
-	do_something();
-	return 1;
-}
-
-int scanf(char * format) {
-	/* 
-		scanf 
-	*/
-	do_something();
-	return 1;
-}
-
-int main(void)
+// enum 선언
+typedef enum foo
 {
-	char name[100];
-	int age;
+	A = 10
+} FOO;
 
-	scanf("%s", name); // comment
-	scanf("%d", &age); // comment
+// 구조체 선언
+typedef struct hello
+{
+	int world;
+	char is;
+	float mine;
+} HELLO;
 
-	printf("Your Name is %s\n", name);
-	printf("Your Age is %d\n", age);
+// 함수 선언
+int my_printf(char *b, ...)
+{
+	/*
+	 * 지역 변수 선언
+	 */
+	int loc = 20, i;
 
+	// 대입
+	loc = 100 + val;
+	val++;
+
+	// 탈출 문자, 함수 호출
+	if (val < 10)
+	{
+		my_printf("local var: %d\n", loc);
+	}
+
+	// 반복문
+	for (i = 0; i < val; i++)
+	{
+		printf("%d\n", loc + i);
+	}
+
+	// 리턴문
 	return 0;
 }
