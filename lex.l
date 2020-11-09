@@ -100,7 +100,6 @@ int checkIdentifier(char *s) {
 	}
 	else if (id->kind==ID_TYPE) {
 		yylval = (YYSTYPE)id->type;
-		printf("%s\n", (char *)yylval);
 		return TYPE_IDENTIFIER;
 	}
 	else {
