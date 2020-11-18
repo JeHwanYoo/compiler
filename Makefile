@@ -7,8 +7,8 @@ YYLEX = lex.yy.c
 YYPARSE = parse.tab.c
 PRINT = print.c
 MAIN = main.c
-LEX = flex
-YACC = bison 
+LEX = flex -d
+YACC = bison -d
 
 # dependencies
 all : $(TARGET)
