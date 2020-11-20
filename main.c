@@ -302,6 +302,7 @@ A_ID				*setDeclaratorListSpecifier(A_ID *id,A_SPECIFIER *p) {
 }
 A_ID				*setFunctionDeclaratorSpecifier(A_ID *id,A_SPECIFIER *p) {
 	A_ID *a;
+	int only_parameter_void = 0;
 	if (p->stor)
 		syntax_error(25, NIL);
 	setDefaultSpecifier(p);
@@ -327,7 +328,12 @@ A_ID				*setFunctionDeclaratorSpecifier(A_ID *id,A_SPECIFIER *p) {
 	while (a) {
 		if (strlen(a->name))
 			current_id=a;
-		else if (a->type)
+		else if (a->type->kind == T_VOID)
+			if (only_parameter_void == 0)
+				only_parameter_void = 1;
+			else
+				syntax_error(33, NIL);
+		else if (a->type && a->type->kind != T_VOID)
 			syntax_error(23, NIL);
 		a=a->link;
 	}
@@ -340,8 +346,13 @@ A_ID				*setFunctionDeclaratorBody(A_ID *id,A_NODE *n) {
 A_ID				*setParameterDeclaratorSpecifier(A_ID *id, A_SPECIFIER *p) {
 	if (searchIdentifierAtCurrentLevel(id->name,id->prev))
 		syntax_error(12,id->name);
-	if (p->stor || p->type==void_type)
-		syntax_error(14,NIL);
+	if (p->stor || p->type==void_type) {
+		// void만 사용했을 경우 에러가 아니게 한다.
+		if (p->type == void_type && strlen(id->name) == 0)
+			; // ex) int main(void)
+		else
+			syntax_error(14,NIL);
+	}
 	setDefaultSpecifier(p);
 	id=setDeclaratorElementType(id,p->type);
 	id->kind=ID_PARM;
@@ -523,6 +534,9 @@ void syntax_error(int i, char *s) {
 			break;
 		case 32:
 			printf("incomplete forward reference for identifier %s", s);
+			break;
+		case 33:
+			printf("'void' must be the only parameter");
 			break;
 		default:
 			printf("unknown");

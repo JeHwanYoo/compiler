@@ -1,5 +1,5 @@
 digit										[0-9]
-letter									[a-zA-z_]
+letter									[a-zA-Z_]
 delim										[\t]
 line										[\n]
 ws											{delim}+

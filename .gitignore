@@ -4,4 +4,5 @@ lex.yy.c
 parse.tab.c
 parse.tab.h
 syntax_analyzer
+test/*
 
