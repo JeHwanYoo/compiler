@@ -351,7 +351,7 @@ void prt_A_TYPE(A_TYPE *t, int s)
         prt_expression(t->expr, s + 2);
       else
         print_space(s + 2);
-      printf("(none)\n");
+      //printf("(none)\n");
       print_space(s);
       printf("| ELEMENT_TYPE\n");
       prt_A_TYPE(t->element_type, s + 2);

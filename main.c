@@ -306,7 +306,7 @@ A_ID				*setFunctionDeclaratorSpecifier(A_ID *id,A_SPECIFIER *p) {
 	if (p->stor)
 		syntax_error(25, NIL);
 	setDefaultSpecifier(p);
-	if (id->type->kind != T_FUNC) {
+	if (id->type && id->type->kind != T_FUNC) {
 		syntax_error(21, NIL);
 		return id;
 	}
@@ -328,7 +328,7 @@ A_ID				*setFunctionDeclaratorSpecifier(A_ID *id,A_SPECIFIER *p) {
 	while (a) {
 		if (strlen(a->name))
 			current_id=a;
-		else if (a->type->kind == T_VOID)
+		else if (a->type && a->type->kind == T_VOID)
 			if (only_parameter_void == 0)
 				only_parameter_void = 1;
 			else

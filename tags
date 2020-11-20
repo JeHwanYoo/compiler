@@ -8,23 +8,16 @@
 $(TARGET)	Makefile	/^$(TARGET): $(PRINT) $(MAIN) $(YYLEX) $(YYPARSE)$/;"	t
 $(YYLEX)	Makefile	/^$(YYLEX): $(L) $(T)$/;"	t
 $(YYPARSE)	Makefile	/^$(YYPARSE): $(Y) $(T)$/;"	t
-A	test3.c	/^	A$/;"	e	enum:foo	file:
-ABC	test3.c	/^int ABC() {$/;"	f	typeref:typename:int
 AMP	parse.tab.c	/^    AMP = 301,$/;"	e	enum:yytokentype	file:
 AMP	parse.tab.h	/^    AMP = 301,$/;"	e	enum:yytokentype
-AMP	tmp/y.tab.h	/^	AMP,$/;"	e	enum:__anon3e7130b90103
 AMPAMP	parse.tab.c	/^    AMPAMP = 285,$/;"	e	enum:yytokentype	file:
 AMPAMP	parse.tab.h	/^    AMPAMP = 285,$/;"	e	enum:yytokentype
-AMPAMP	tmp/y.tab.h	/^	AMPAMP,$/;"	e	enum:__anon3e7130b90103
 ARROW	parse.tab.c	/^    ARROW = 278,$/;"	e	enum:yytokentype	file:
 ARROW	parse.tab.h	/^    ARROW = 278,$/;"	e	enum:yytokentype
-ARROW	tmp/y.tab.h	/^	ARROW,$/;"	e	enum:__anon3e7130b90103
 ASSIGN	parse.tab.c	/^    ASSIGN = 305,$/;"	e	enum:yytokentype	file:
 ASSIGN	parse.tab.h	/^    ASSIGN = 305,$/;"	e	enum:yytokentype
-ASSIGN	tmp/y.tab.h	/^	ASSIGN,$/;"	e	enum:__anon3e7130b90103
 AUTO_SYM	parse.tab.c	/^    AUTO_SYM = 258,$/;"	e	enum:yytokentype	file:
 AUTO_SYM	parse.tab.h	/^    AUTO_SYM = 258,$/;"	e	enum:yytokentype
-AUTO_SYM	tmp/y.tab.h	/^	AUTO_SYM,$/;"	e	enum:__anon3e7130b90103
 A_ID	type.h	/^	struct s_id *link;} A_ID;$/;"	t	typeref:struct:s_id
 A_LITERAL	type.h	/^	typedef struct lit {int addr; A_TYPE *type; LIT_VALUE value;} A_LITERAL;$/;"	t	typeref:struct:lit
 A_NODE	type.h	/^} A_NODE;$/;"	t	typeref:struct:s_node
@@ -32,42 +25,30 @@ A_SPECIFIER	type.h	/^	} A_SPECIFIER;$/;"	t	typeref:struct:__anon1f42211d0708
 A_TYPE	type.h	/^} A_TYPE;$/;"	t	typeref:struct:s_type
 BARBAR	parse.tab.c	/^    BARBAR = 286,$/;"	e	enum:yytokentype	file:
 BARBAR	parse.tab.h	/^    BARBAR = 286,$/;"	e	enum:yytokentype
-BARBAR	tmp/y.tab.h	/^	BARBAR,$/;"	e	enum:__anon3e7130b90103
 BEGIN	lex.yy.c	/^#define BEGIN /;"	d	file:
 BOOLEAN	type.h	/^typedef enum {FALSE,TRUE} BOOLEAN;$/;"	t	typeref:enum:__anon1f42211d0103
 BREAK_SYM	parse.tab.c	/^    BREAK_SYM = 259,$/;"	e	enum:yytokentype	file:
 BREAK_SYM	parse.tab.h	/^    BREAK_SYM = 259,$/;"	e	enum:yytokentype
-BREAK_SYM	tmp/y.tab.h	/^	BREAK_SYM,$/;"	e	enum:__anon3e7130b90103
 CASE_SYM	parse.tab.c	/^    CASE_SYM = 260,$/;"	e	enum:yytokentype	file:
 CASE_SYM	parse.tab.h	/^    CASE_SYM = 260,$/;"	e	enum:yytokentype
-CASE_SYM	tmp/y.tab.h	/^	CASE_SYM,$/;"	e	enum:__anon3e7130b90103
 CHARACTER_CONSTANT	parse.tab.c	/^    CHARACTER_CONSTANT = 308,$/;"	e	enum:yytokentype	file:
 CHARACTER_CONSTANT	parse.tab.h	/^    CHARACTER_CONSTANT = 308,$/;"	e	enum:yytokentype
-CHARACTER_CONSTANT	tmp/y.tab.h	/^	CHARACTER_CONSTANT,$/;"	e	enum:__anon3e7130b90103
 COLON	parse.tab.c	/^    COLON = 294,$/;"	e	enum:yytokentype	file:
 COLON	parse.tab.h	/^    COLON = 294,$/;"	e	enum:yytokentype
-COLON	tmp/y.tab.h	/^	COLON,$/;"	e	enum:__anon3e7130b90103
 COMMA	parse.tab.c	/^    COMMA = 296,$/;"	e	enum:yytokentype	file:
 COMMA	parse.tab.h	/^    COMMA = 296,$/;"	e	enum:yytokentype
-COMMA	tmp/y.tab.h	/^	COMMA,$/;"	e	enum:__anon3e7130b90103
-CONST_SYM	tmp/y.tab.h	/^	CONST_SYM,$/;"	e	enum:__anon3e7130b90103
 CONTINUE_SYM	parse.tab.c	/^    CONTINUE_SYM = 261,$/;"	e	enum:yytokentype	file:
 CONTINUE_SYM	parse.tab.h	/^    CONTINUE_SYM = 261,$/;"	e	enum:yytokentype
-CONTINUE_SYM	tmp/y.tab.h	/^	CONTINUE_SYM,$/;"	e	enum:__anon3e7130b90103
 DEFAULT_SYM	parse.tab.c	/^    DEFAULT_SYM = 262,$/;"	e	enum:yytokentype	file:
 DEFAULT_SYM	parse.tab.h	/^    DEFAULT_SYM = 262,$/;"	e	enum:yytokentype
-DEFAULT_SYM	tmp/y.tab.h	/^	DEFAULT_SYM,$/;"	e	enum:__anon3e7130b90103
 DOTDOTDOT	parse.tab.c	/^    DOTDOTDOT = 287,$/;"	e	enum:yytokentype	file:
 DOTDOTDOT	parse.tab.h	/^    DOTDOTDOT = 287,$/;"	e	enum:yytokentype
-DOTDOTDOT	tmp/y.tab.h	/^	DOTDOTDOT,$/;"	e	enum:__anon3e7130b90103
 DO_SYM	parse.tab.c	/^    DO_SYM = 263,$/;"	e	enum:yytokentype	file:
 DO_SYM	parse.tab.h	/^    DO_SYM = 263,$/;"	e	enum:yytokentype
-DO_SYM	tmp/y.tab.h	/^	DO_SYM,$/;"	e	enum:__anon3e7130b90103
 ECHO	lex.yy.c	/^#define ECHO /;"	d	file:
 ECHO	lex.yy.c	/^ECHO;$/;"	v	typeref:typename:YY_RULE_SETUP
 ELSE_SYM	parse.tab.c	/^    ELSE_SYM = 264,$/;"	e	enum:yytokentype	file:
 ELSE_SYM	parse.tab.h	/^    ELSE_SYM = 264,$/;"	e	enum:yytokentype
-ELSE_SYM	tmp/y.tab.h	/^	ELSE_SYM,$/;"	e	enum:__anon3e7130b90103
 ENUM_SYM	parse.tab.c	/^    ENUM_SYM = 274,$/;"	e	enum:yytokentype	file:
 ENUM_SYM	parse.tab.h	/^    ENUM_SYM = 274,$/;"	e	enum:yytokentype
 EOB_ACT_CONTINUE_SCAN	lex.yy.c	/^#define EOB_ACT_CONTINUE_SCAN /;"	d	file:
@@ -75,32 +56,24 @@ EOB_ACT_END_OF_FILE	lex.yy.c	/^#define EOB_ACT_END_OF_FILE /;"	d	file:
 EOB_ACT_LAST_MATCH	lex.yy.c	/^#define EOB_ACT_LAST_MATCH /;"	d	file:
 EQL	parse.tab.c	/^    EQL = 283,$/;"	e	enum:yytokentype	file:
 EQL	parse.tab.h	/^    EQL = 283,$/;"	e	enum:yytokentype
-EQL	tmp/y.tab.h	/^	EQL,$/;"	e	enum:__anon3e7130b90103
 EXCL	parse.tab.c	/^    EXCL = 297,$/;"	e	enum:yytokentype	file:
 EXCL	parse.tab.h	/^    EXCL = 297,$/;"	e	enum:yytokentype
-EXCL	tmp/y.tab.h	/^	EXCL,$/;"	e	enum:__anon3e7130b90103
 EXIT_SUCCESS	parse.tab.c	/^#      define EXIT_SUCCESS /;"	d	file:
 EXIT_SUCCESS	parse.tab.c	/^#    define EXIT_SUCCESS /;"	d	file:
 FALSE	type.h	/^typedef enum {FALSE,TRUE} BOOLEAN;$/;"	e	enum:__anon1f42211d0103
 FLEXINT_H	lex.yy.c	/^#define FLEXINT_H$/;"	d	file:
 FLEX_BETA	lex.yy.c	/^#define FLEX_BETA$/;"	d	file:
-FLEX_DEBUG	lex.yy.c	/^#define FLEX_DEBUG$/;"	d	file:
 FLEX_SCANNER	lex.yy.c	/^#define FLEX_SCANNER$/;"	d	file:
 FLOAT_CONSTANT	parse.tab.c	/^    FLOAT_CONSTANT = 307,$/;"	e	enum:yytokentype	file:
 FLOAT_CONSTANT	parse.tab.h	/^    FLOAT_CONSTANT = 307,$/;"	e	enum:yytokentype
-FLOAT_CONSTANT	tmp/y.tab.h	/^	FLOAT_CONSTANT,$/;"	e	enum:__anon3e7130b90103
 FOR_SYM	parse.tab.c	/^    FOR_SYM = 265,$/;"	e	enum:yytokentype	file:
 FOR_SYM	parse.tab.h	/^    FOR_SYM = 265,$/;"	e	enum:yytokentype
-FOR_SYM	tmp/y.tab.h	/^	FOR_SYM,$/;"	e	enum:__anon3e7130b90103
 GEQ	parse.tab.c	/^    GEQ = 282,$/;"	e	enum:yytokentype	file:
 GEQ	parse.tab.h	/^    GEQ = 282,$/;"	e	enum:yytokentype
-GEQ	tmp/y.tab.h	/^	GEQ,$/;"	e	enum:__anon3e7130b90103
 GTR	parse.tab.c	/^    GTR = 280,$/;"	e	enum:yytokentype	file:
 GTR	parse.tab.h	/^    GTR = 280,$/;"	e	enum:yytokentype
-GTR	tmp/y.tab.h	/^	GTR,$/;"	e	enum:__anon3e7130b90103
 IDENTIFIER	parse.tab.c	/^    IDENTIFIER = 312$/;"	e	enum:yytokentype	file:
 IDENTIFIER	parse.tab.h	/^    IDENTIFIER = 312$/;"	e	enum:yytokentype
-IDENTIFIER	tmp/y.tab.h	/^	IDENTIFIER,$/;"	e	enum:__anon3e7130b90103
 ID_ENUM	type.h	/^typedef enum {ID_NULL,ID_VAR,ID_FUNC,ID_PARM,ID_FIELD,ID_TYPE,ID_ENUM,ID_STRUCT,ID_ENUM_LITERAL}/;"	e	enum:__anon1f42211d0503
 ID_ENUM_LITERAL	type.h	/^typedef enum {ID_NULL,ID_VAR,ID_FUNC,ID_PARM,ID_FIELD,ID_TYPE,ID_ENUM,ID_STRUCT,ID_ENUM_LITERAL}/;"	e	enum:__anon1f42211d0503
 ID_FIELD	type.h	/^typedef enum {ID_NULL,ID_VAR,ID_FUNC,ID_PARM,ID_FIELD,ID_TYPE,ID_ENUM,ID_STRUCT,ID_ENUM_LITERAL}/;"	e	enum:__anon1f42211d0503
@@ -113,7 +86,6 @@ ID_TYPE	type.h	/^typedef enum {ID_NULL,ID_VAR,ID_FUNC,ID_PARM,ID_FIELD,ID_TYPE,I
 ID_VAR	type.h	/^typedef enum {ID_NULL,ID_VAR,ID_FUNC,ID_PARM,ID_FIELD,ID_TYPE,ID_ENUM,ID_STRUCT,ID_ENUM_LITERAL}/;"	e	enum:__anon1f42211d0503
 IF_SYM	parse.tab.c	/^    IF_SYM = 266,$/;"	e	enum:yytokentype	file:
 IF_SYM	parse.tab.h	/^    IF_SYM = 266,$/;"	e	enum:yytokentype
-IF_SYM	tmp/y.tab.h	/^	IF_SYM,$/;"	e	enum:__anon3e7130b90103
 INITIAL	lex.yy.c	/^#define INITIAL /;"	d	file:
 INT16_MAX	lex.yy.c	/^#define INT16_MAX /;"	d	file:
 INT16_MIN	lex.yy.c	/^#define INT16_MIN /;"	d	file:
@@ -123,35 +95,26 @@ INT8_MAX	lex.yy.c	/^#define INT8_MAX /;"	d	file:
 INT8_MIN	lex.yy.c	/^#define INT8_MIN /;"	d	file:
 INTEGER_CONSTANT	parse.tab.c	/^    INTEGER_CONSTANT = 306,$/;"	e	enum:yytokentype	file:
 INTEGER_CONSTANT	parse.tab.h	/^    INTEGER_CONSTANT = 306,$/;"	e	enum:yytokentype
-INTEGER_CONSTANT	tmp/y.tab.h	/^	INTEGER_CONSTANT,$/;"	e	enum:__anon3e7130b90103
 L	Makefile	/^L = lex.l$/;"	m
 LB	parse.tab.c	/^    LB = 290,$/;"	e	enum:yytokentype	file:
 LB	parse.tab.h	/^    LB = 290,$/;"	e	enum:yytokentype
-LB	tmp/y.tab.h	/^	LB,$/;"	e	enum:__anon3e7130b90103
 LEQ	parse.tab.c	/^    LEQ = 281,$/;"	e	enum:yytokentype	file:
 LEQ	parse.tab.h	/^    LEQ = 281,$/;"	e	enum:yytokentype
-LEQ	tmp/y.tab.h	/^	LEQ,$/;"	e	enum:__anon3e7130b90103
-LEX	Makefile	/^LEX = flex -d$/;"	m
+LEX	Makefile	/^LEX = flex$/;"	m
 LIT_VALUE	type.h	/^	typedef union {int i; float f; char c; char *s;} LIT_VALUE;$/;"	t	typeref:union:__anon1f42211d060a
 LP	parse.tab.c	/^    LP = 288,$/;"	e	enum:yytokentype	file:
 LP	parse.tab.h	/^    LP = 288,$/;"	e	enum:yytokentype
-LP	tmp/y.tab.h	/^	LP,$/;"	e	enum:__anon3e7130b90103
 LR	parse.tab.c	/^    LR = 292,$/;"	e	enum:yytokentype	file:
 LR	parse.tab.h	/^    LR = 292,$/;"	e	enum:yytokentype
-LR	tmp/y.tab.h	/^	LR,$/;"	e	enum:__anon3e7130b90103
 LSS	parse.tab.c	/^    LSS = 279,$/;"	e	enum:yytokentype	file:
 LSS	parse.tab.h	/^    LSS = 279,$/;"	e	enum:yytokentype
-LSS	tmp/y.tab.h	/^	LSS,$/;"	e	enum:__anon3e7130b90103
 MAIN	Makefile	/^MAIN = main.c$/;"	m
 MINUS	parse.tab.c	/^    MINUS = 304,$/;"	e	enum:yytokentype	file:
 MINUS	parse.tab.h	/^    MINUS = 304,$/;"	e	enum:yytokentype
-MINUS	tmp/y.tab.h	/^	MINUS,$/;"	e	enum:__anon3e7130b90103
 MINUSMINUS	parse.tab.c	/^    MINUSMINUS = 277,$/;"	e	enum:yytokentype	file:
 MINUSMINUS	parse.tab.h	/^    MINUSMINUS = 277,$/;"	e	enum:yytokentype
-MINUSMINUS	tmp/y.tab.h	/^	MINUSMINUS,$/;"	e	enum:__anon3e7130b90103
 NEQ	parse.tab.c	/^    NEQ = 284,$/;"	e	enum:yytokentype	file:
 NEQ	parse.tab.h	/^    NEQ = 284,$/;"	e	enum:yytokentype
-NEQ	tmp/y.tab.h	/^	NEQ,$/;"	e	enum:__anon3e7130b90103
 NIL	type.h	/^#define NIL /;"	d
 NODE_NAME	type.h	/^	N_INIT_LIST_NIL} NODE_NAME;$/;"	t	typeref:enum:e_node_name
 N_ARG_LIST	type.h	/^	N_ARG_LIST,$/;"	e	enum:e_node_name
@@ -215,16 +178,12 @@ N_STMT_SWITCH	type.h	/^	N_STMT_SWITCH,$/;"	e	enum:e_node_name
 N_STMT_WHILE	type.h	/^	N_STMT_WHILE,$/;"	e	enum:e_node_name
 PERCENT	parse.tab.c	/^    PERCENT = 300,$/;"	e	enum:yytokentype	file:
 PERCENT	parse.tab.h	/^    PERCENT = 300,$/;"	e	enum:yytokentype
-PERCENT	tmp/y.tab.h	/^	PERCENT,$/;"	e	enum:__anon3e7130b90103
 PERIOD	parse.tab.c	/^    PERIOD = 295,$/;"	e	enum:yytokentype	file:
 PERIOD	parse.tab.h	/^    PERIOD = 295,$/;"	e	enum:yytokentype
-PERIOD	tmp/y.tab.h	/^	PERIOD,$/;"	e	enum:__anon3e7130b90103
 PLUS	parse.tab.c	/^    PLUS = 303,$/;"	e	enum:yytokentype	file:
 PLUS	parse.tab.h	/^    PLUS = 303,$/;"	e	enum:yytokentype
-PLUS	tmp/y.tab.h	/^	PLUS,$/;"	e	enum:__anon3e7130b90103
 PLUSPLUS	parse.tab.c	/^    PLUSPLUS = 276,$/;"	e	enum:yytokentype	file:
 PLUSPLUS	parse.tab.h	/^    PLUSPLUS = 276,$/;"	e	enum:yytokentype
-PLUSPLUS	tmp/y.tab.h	/^	PLUSPLUS,$/;"	e	enum:__anon3e7130b90103
 PRINT	Makefile	/^PRINT = print.c$/;"	m
 Q_CONST	type.h	/^typedef enum {Q_NULL, Q_CONST, Q_VOLATILE} Q_KIND;$/;"	e	enum:__anon1f42211d0303
 Q_KIND	type.h	/^typedef enum {Q_NULL, Q_CONST, Q_VOLATILE} Q_KIND;$/;"	t	typeref:enum:__anon1f42211d0303
@@ -232,44 +191,32 @@ Q_NULL	type.h	/^typedef enum {Q_NULL, Q_CONST, Q_VOLATILE} Q_KIND;$/;"	e	enum:__
 Q_VOLATILE	type.h	/^typedef enum {Q_NULL, Q_CONST, Q_VOLATILE} Q_KIND;$/;"	e	enum:__anon1f42211d0303
 RB	parse.tab.c	/^    RB = 291,$/;"	e	enum:yytokentype	file:
 RB	parse.tab.h	/^    RB = 291,$/;"	e	enum:yytokentype
-RB	tmp/y.tab.h	/^	RB,$/;"	e	enum:__anon3e7130b90103
 REJECT	lex.yy.c	/^#define REJECT /;"	d	file:
 RETURN_SYM	parse.tab.c	/^    RETURN_SYM = 267,$/;"	e	enum:yytokentype	file:
 RETURN_SYM	parse.tab.h	/^    RETURN_SYM = 267,$/;"	e	enum:yytokentype
-RETURN_SYM	tmp/y.tab.h	/^	RETURN_SYM,$/;"	e	enum:__anon3e7130b90103
 RP	parse.tab.c	/^    RP = 289,$/;"	e	enum:yytokentype	file:
 RP	parse.tab.h	/^    RP = 289,$/;"	e	enum:yytokentype
-RP	tmp/y.tab.h	/^	RP,$/;"	e	enum:__anon3e7130b90103
 RR	parse.tab.c	/^    RR = 293,$/;"	e	enum:yytokentype	file:
 RR	parse.tab.h	/^    RR = 293,$/;"	e	enum:yytokentype
-RR	tmp/y.tab.h	/^	RR,$/;"	e	enum:__anon3e7130b90103
 SEMICOLON	parse.tab.c	/^    SEMICOLON = 302,$/;"	e	enum:yytokentype	file:
 SEMICOLON	parse.tab.h	/^    SEMICOLON = 302,$/;"	e	enum:yytokentype
-SEMICOLON	tmp/y.tab.h	/^	SEMICOLON,$/;"	e	enum:__anon3e7130b90103
 SIZEOF_SYM	parse.tab.c	/^    SIZEOF_SYM = 268,$/;"	e	enum:yytokentype	file:
 SIZEOF_SYM	parse.tab.h	/^    SIZEOF_SYM = 268,$/;"	e	enum:yytokentype
-SIZEOF_SYM	tmp/y.tab.h	/^	SIZEOF_SYM,$/;"	e	enum:__anon3e7130b90103
 SIZE_MAX	lex.yy.c	/^#define SIZE_MAX /;"	d	file:
 SLASH	parse.tab.c	/^    SLASH = 299,$/;"	e	enum:yytokentype	file:
 SLASH	parse.tab.h	/^    SLASH = 299,$/;"	e	enum:yytokentype
-SLASH	tmp/y.tab.h	/^	SLASH,$/;"	e	enum:__anon3e7130b90103
 STAR	parse.tab.c	/^    STAR = 298,$/;"	e	enum:yytokentype	file:
 STAR	parse.tab.h	/^    STAR = 298,$/;"	e	enum:yytokentype
-STAR	tmp/y.tab.h	/^	STAR,$/;"	e	enum:__anon3e7130b90103
 STATIC_SYM	parse.tab.c	/^    STATIC_SYM = 269,$/;"	e	enum:yytokentype	file:
 STATIC_SYM	parse.tab.h	/^    STATIC_SYM = 269,$/;"	e	enum:yytokentype
-STATIC_SYM	tmp/y.tab.h	/^	STATIC_SYM,$/;"	e	enum:__anon3e7130b90103
 STRING_CONSTANT	parse.tab.c	/^    STRING_CONSTANT = 309,$/;"	e	enum:yytokentype	file:
 STRING_CONSTANT	parse.tab.h	/^    STRING_CONSTANT = 309,$/;"	e	enum:yytokentype
 STRING_LITERAL	parse.tab.c	/^    STRING_LITERAL = 310,$/;"	e	enum:yytokentype	file:
 STRING_LITERAL	parse.tab.h	/^    STRING_LITERAL = 310,$/;"	e	enum:yytokentype
-STRING_LITERAL	tmp/y.tab.h	/^	STRING_LITERAL,$/;"	e	enum:__anon3e7130b90103
 STRUCT_SYM	parse.tab.c	/^    STRUCT_SYM = 270,$/;"	e	enum:yytokentype	file:
 STRUCT_SYM	parse.tab.h	/^    STRUCT_SYM = 270,$/;"	e	enum:yytokentype
-STRUCT_SYM	tmp/y.tab.h	/^	STRUCT_SYM,$/;"	e	enum:__anon3e7130b90103
 SWITCH_SYM	parse.tab.c	/^    SWITCH_SYM = 271,$/;"	e	enum:yytokentype	file:
 SWITCH_SYM	parse.tab.h	/^    SWITCH_SYM = 271,$/;"	e	enum:yytokentype
-SWITCH_SYM	tmp/y.tab.h	/^	SWITCH_SYM,$/;"	e	enum:__anon3e7130b90103
 S_AUTO	type.h	/^typedef enum {S_NULL, S_AUTO, S_STATIC, S_TYPEDEF, S_EXTERN, S_REGISTER} S_KIND;$/;"	e	enum:__anon1f42211d0403
 S_EXTERN	type.h	/^typedef enum {S_NULL, S_AUTO, S_STATIC, S_TYPEDEF, S_EXTERN, S_REGISTER} S_KIND;$/;"	e	enum:__anon1f42211d0403
 S_KIND	type.h	/^typedef enum {S_NULL, S_AUTO, S_STATIC, S_TYPEDEF, S_EXTERN, S_REGISTER} S_KIND;$/;"	t	typeref:enum:__anon1f42211d0403
@@ -282,10 +229,8 @@ TARGET	Makefile	/^TARGET = syntax_analyzer$/;"	m
 TRUE	type.h	/^typedef enum {FALSE,TRUE} BOOLEAN;$/;"	e	enum:__anon1f42211d0103
 TYPEDEF_SYM	parse.tab.c	/^    TYPEDEF_SYM = 272,$/;"	e	enum:yytokentype	file:
 TYPEDEF_SYM	parse.tab.h	/^    TYPEDEF_SYM = 272,$/;"	e	enum:yytokentype
-TYPEDEF_SYM	tmp/y.tab.h	/^	TYPEDEF_SYM,$/;"	e	enum:__anon3e7130b90103
 TYPE_IDENTIFIER	parse.tab.c	/^    TYPE_IDENTIFIER = 311,$/;"	e	enum:yytokentype	file:
 TYPE_IDENTIFIER	parse.tab.h	/^    TYPE_IDENTIFIER = 311,$/;"	e	enum:yytokentype
-TYPE_IDENTIFIER	tmp/y.tab.h	/^	TYPE_IDENTIFIER,$/;"	e	enum:__anon3e7130b90103
 T_ARRAY	type.h	/^typedef enum {T_NULL, T_ENUM, T_ARRAY, T_STRUCT, T_UNION, T_FUNC, T_POINTER, T_VOID} T_KIND;$/;"	e	enum:__anon1f42211d0203
 T_ENUM	type.h	/^typedef enum {T_NULL, T_ENUM, T_ARRAY, T_STRUCT, T_UNION, T_FUNC, T_POINTER, T_VOID} T_KIND;$/;"	e	enum:__anon1f42211d0203
 T_FUNC	type.h	/^typedef enum {T_NULL, T_ENUM, T_ARRAY, T_STRUCT, T_UNION, T_FUNC, T_POINTER, T_VOID} T_KIND;$/;"	e	enum:__anon1f42211d0203
@@ -300,12 +245,10 @@ UINT32_MAX	lex.yy.c	/^#define UINT32_MAX /;"	d	file:
 UINT8_MAX	lex.yy.c	/^#define UINT8_MAX /;"	d	file:
 UNION_SYM	parse.tab.c	/^    UNION_SYM = 273,$/;"	e	enum:yytokentype	file:
 UNION_SYM	parse.tab.h	/^    UNION_SYM = 273,$/;"	e	enum:yytokentype
-UNION_SYM	tmp/y.tab.h	/^	UNION_SYM,$/;"	e	enum:__anon3e7130b90103
 WHILE_SYM	parse.tab.c	/^    WHILE_SYM = 275,$/;"	e	enum:yytokentype	file:
 WHILE_SYM	parse.tab.h	/^    WHILE_SYM = 275,$/;"	e	enum:yytokentype
-WHILE_SYM	tmp/y.tab.h	/^	WHILE_SYM,$/;"	e	enum:__anon3e7130b90103
 Y	Makefile	/^Y = parse.y$/;"	m
-YACC	Makefile	/^YACC = bison -d$/;"	m
+YACC	Makefile	/^YACC = bison $/;"	m
 YYABORT	parse.tab.c	/^#define YYABORT /;"	d	file:
 YYACCEPT	parse.tab.c	/^#define YYACCEPT /;"	d	file:
 YYBACKUP	parse.tab.c	/^#define YYBACKUP(/;"	d	file:
@@ -439,15 +382,12 @@ YY_STATE_EOF	lex.yy.c	/^#define YY_STATE_EOF(/;"	d	file:
 YY_STDINT_H	parse.tab.c	/^#  define YY_STDINT_H$/;"	d	file:
 YY_STRUCT_YY_BUFFER_STATE	lex.yy.c	/^#define YY_STRUCT_YY_BUFFER_STATE$/;"	d	file:
 YY_SYMBOL_PRINT	parse.tab.c	/^# define YY_SYMBOL_PRINT(/;"	d	file:
-YY_TOKEN	tmp/y.tab.h	/^} YY_TOKEN;$/;"	t	typeref:enum:__anon3e7130b90103
 YY_TYPEDEF_YY_BUFFER_STATE	lex.yy.c	/^#define YY_TYPEDEF_YY_BUFFER_STATE$/;"	d	file:
 YY_TYPEDEF_YY_SIZE_T	lex.yy.c	/^#define YY_TYPEDEF_YY_SIZE_T$/;"	d	file:
 YY_USER_ACTION	lex.yy.c	/^#define YY_USER_ACTION$/;"	d	file:
-YY_YY_PARSE_TAB_H_INCLUDED	parse.tab.c	/^# define YY_YY_PARSE_TAB_H_INCLUDED$/;"	d	file:
 YY_YY_PARSE_TAB_H_INCLUDED	parse.tab.h	/^# define YY_YY_PARSE_TAB_H_INCLUDED$/;"	d
 __STDC_LIMIT_MACROS	lex.yy.c	/^#define __STDC_LIMIT_MACROS /;"	d	file:
 __TYPE_H_	type.h	/^#define __TYPE_H_$/;"	d
-__Y_TAB_H	tmp/y.tab.h	/^#define __Y_TAB_H$/;"	d
 __anon1f42211d0103	type.h	/^typedef enum {FALSE,TRUE} BOOLEAN;$/;"	g
 __anon1f42211d0203	type.h	/^typedef enum {T_NULL, T_ENUM, T_ARRAY, T_STRUCT, T_UNION, T_FUNC, T_POINTER, T_VOID} T_KIND;$/;"	g
 __anon1f42211d0303	type.h	/^typedef enum {Q_NULL, Q_CONST, Q_VOLATILE} Q_KIND;$/;"	g
@@ -455,8 +395,8 @@ __anon1f42211d0403	type.h	/^typedef enum {S_NULL, S_AUTO, S_STATIC, S_TYPEDEF, S
 __anon1f42211d0503	type.h	/^typedef enum {ID_NULL,ID_VAR,ID_FUNC,ID_PARM,ID_FIELD,ID_TYPE,ID_ENUM,ID_STRUCT,ID_ENUM_LITERAL}/;"	g
 __anon1f42211d060a	type.h	/^	typedef union {int i; float f; char c; char *s;} LIT_VALUE;$/;"	u
 __anon1f42211d0708	type.h	/^	typedef struct {$/;"	s
-__anon3e7130b90103	tmp/y.tab.h	/^typedef enum {$/;"	g
 __anon9f683cd60103	parse.tab.c	/^  enum { YYERROR_VERBOSE_ARGS_MAXIMUM = 5 };$/;"	g	function:yysyntax_error	file:
+a	test/test2.c	/^int a[10];$/;"	v	typeref:typename:int[10]
 abstract_declarator	parse.y	/^abstract_declarator$/;"	l
 abstract_declarator_opt	parse.y	/^abstract_declarator_opt$/;"	l
 additive_expression	parse.y	/^additive_expression$/;"	l
@@ -473,7 +413,6 @@ bitwise_xor_expression	parse.y	/^bitwise_xor_expression$/;"	l
 c	type.h	/^	typedef union {int i; float f; char c; char *s;} LIT_VALUE;$/;"	m	union:__anon1f42211d060a	typeref:typename:char
 cast_expression	parse.y	/^cast_expression$/;"	l
 char_type	main.c	/^A_TYPE *char_type;$/;"	v	typeref:typename:A_TYPE *
-charval	test2.c	/^char charval = 'a';$/;"	v	typeref:typename:char
 check	type.h	/^	BOOLEAN check;$/;"	m	struct:s_type	typeref:typename:BOOLEAN
 checkForwardReference	main.c	/^void				checkForwardReference() {$/;"	f	typeref:typename:void
 checkIdentifier	lex.yy.c	/^int checkIdentifier(char *s) {$/;"	f	typeref:typename:int
@@ -485,7 +424,7 @@ conditional_expression	parse.y	/^conditional_expression$/;"	l
 constant_expression	parse.y	/^constant_expression$/;"	l
 constant_expression_opt	parse.y	/^constant_expression_opt$/;"	l
 current_id	main.c	/^A_ID *current_id = NIL;$/;"	v	typeref:typename:A_ID *
-current_level	main.c	/^int syntax_err = 0, line_no = 0, current_level=0;$/;"	v	typeref:typename:int
+current_level	main.c	/^int syntax_err = 0, line_no = 1, current_level=0;$/;"	v	typeref:typename:int
 declaration	parse.y	/^declaration$/;"	l
 declaration_list	parse.y	/^declaration_list$/;"	l
 declaration_list_opt	parse.y	/^declaration_list_opt$/;"	l
@@ -493,7 +432,6 @@ declaration_specifiers	parse.y	/^declaration_specifiers$/;"	l
 declarator	parse.y	/^declarator$/;"	l
 direct_abstract_declarator	parse.y	/^direct_abstract_declarator$/;"	l
 direct_declarator	parse.y	/^direct_declarator$/;"	l
-do_something	test.c	/^void do_something() {$/;"	f	typeref:typename:void
 e_node_name	type.h	/^typedef enum e_node_name {$/;"	g
 echo	Makefile	/^echo:$/;"	t
 element_type	type.h	/^	struct s_type *element_type;$/;"	m	struct:s_type	typeref:struct:s_type *
@@ -521,14 +459,10 @@ flex_uint32_t	lex.yy.c	/^typedef unsigned int flex_uint32_t;$/;"	t	typeref:typen
 flex_uint8_t	lex.yy.c	/^typedef uint8_t flex_uint8_t;$/;"	t	typeref:typename:uint8_t	file:
 flex_uint8_t	lex.yy.c	/^typedef unsigned char flex_uint8_t; $/;"	t	typeref:typename:unsigned char	file:
 float_type	main.c	/^A_TYPE *float_type;$/;"	v	typeref:typename:A_TYPE *
-foo	test3.c	/^enum foo {$/;"	g	file:
 for_expression	parse.y	/^for_expression$/;"	l
-func3	test2.c	/^func3() { $/;"	f
-func4	test2.c	/^int func4(char *s) {$/;"	f	typeref:typename:int
 function_definition	parse.y	/^function_definition$/;"	l
 getIdentifierDeclared	main.c	/^A_ID				*getIdentifierDeclared(char *s) {$/;"	f	typeref:typename:A_ID *
 getTypeOfStructOrEnumRefIdentifier	main.c	/^A_TYPE			*getTypeOfStructOrEnumRefIdentifier(T_KIND k,char *s,ID_KIND kk) {$/;"	f	typeref:typename:A_TYPE *
-hello	test3.c	/^struct hello {$/;"	s	file:
 i	type.h	/^	typedef union {int i; float f; char c; char *s;} LIT_VALUE;$/;"	m	union:__anon1f42211d060a	typeref:typename:int
 id_kind_name	print.c	/^char *id_kind_name[] = {"NULL", "VAR", "FUNC", "PARM", "FIELD", "TYPE", "ENUM",$/;"	v	typeref:typename:char * []
 init	type.h	/^	A_NODE *init;$/;"	m	struct:s_id	typeref:typename:A_NODE *
@@ -539,8 +473,6 @@ initialize	main.c	/^void initialize() {$/;"	f	typeref:typename:void
 initializer	parse.y	/^initializer$/;"	l
 initializer_list	parse.y	/^initializer_list$/;"	l
 int_type	main.c	/^A_TYPE *int_type;$/;"	v	typeref:typename:A_TYPE *
-intval	test2.c	/^int intval = 5;$/;"	v	typeref:typename:int
-is	test3.c	/^	char is;$/;"	m	struct:hello	typeref:typename:char	file:
 isNotSameFormalParameters	main.c	/^BOOLEAN			isNotSameFormalParameters(A_ID *a,A_ID *b) {$/;"	f	typeref:typename:BOOLEAN
 isNotSameType	main.c	/^BOOLEAN			isNotSameType(A_TYPE *t1,A_TYPE *t2) {$/;"	f	typeref:typename:BOOLEAN
 isPointerOrArrayType	main.c	/^BOOLEAN			isPointerOrArrayType(A_TYPE *t) {$/;"	f	typeref:typename:BOOLEAN
@@ -554,7 +486,7 @@ line	type.h	/^		int line;$/;"	m	struct:__anon1f42211d0708	typeref:typename:int
 line	type.h	/^	int line;$/;"	m	struct:s_id	typeref:typename:int
 line	type.h	/^	int line;$/;"	m	struct:s_node	typeref:typename:int
 line	type.h	/^	int line;$/;"	m	struct:s_type	typeref:typename:int
-line_no	main.c	/^int syntax_err = 0, line_no = 0, current_level=0;$/;"	v	typeref:typename:int
+line_no	main.c	/^int syntax_err = 0, line_no = 1, current_level=0;$/;"	v	typeref:typename:int
 link	type.h	/^	struct s_id *link;} A_ID;$/;"	m	struct:s_id	typeref:struct:s_id *
 linkDeclaratorList	main.c	/^A_ID				*linkDeclaratorList(A_ID *id1,A_ID *id2) {$/;"	f	typeref:typename:A_ID *
 lit	type.h	/^	typedef struct lit {int addr; A_TYPE *type; LIT_VALUE value;} A_LITERAL;$/;"	s
@@ -563,7 +495,7 @@ local_var_size	type.h	/^	int local_var_size;$/;"	m	struct:s_type	typeref:typenam
 logical_and_expression	parse.y	/^logical_and_expression$/;"	l
 logical_or_expression	parse.y	/^logical_or_expression$/;"	l
 main	main.c	/^int main(int argc, char *argv[])$/;"	f	typeref:typename:int
-main	test.c	/^int main(void)$/;"	f	typeref:typename:int
+main	test/test1.c	/^int main(void) {$/;"	f	typeref:typename:int
 makeDummyIdentifier	main.c	/^A_ID				*makeDummyIdentifier() {$/;"	f	typeref:typename:A_ID *
 makeIdentifier	main.c	/^A_ID				*makeIdentifier(char *s) {$/;"	f	typeref:typename:A_ID *
 makeNode	main.c	/^A_NODE			*makeNode(NODE_NAME n,A_NODE *a,A_NODE *b,A_NODE *c) {$/;"	f	typeref:typename:A_NODE *
@@ -571,7 +503,6 @@ makeNodeList	main.c	/^A_NODE			*makeNodeList(NODE_NAME n,A_NODE *a,A_NODE *b) {$
 makeSpecifier	main.c	/^A_SPECIFIER *makeSpecifier(A_TYPE *t,S_KIND s) {$/;"	f	typeref:typename:A_SPECIFIER *
 makeString	lex.yy.c	/^char *makeString(char *s) {$/;"	f	typeref:typename:char *
 makeType	main.c	/^A_TYPE			*makeType(T_KIND k) {$/;"	f	typeref:typename:A_TYPE *
-mine	test3.c	/^	float mine;$/;"	m	struct:hello	typeref:typename:float	file:
 multiplicative_expression	parse.y	/^multiplicative_expression$/;"	l
 name	type.h	/^	NODE_NAME name;$/;"	m	struct:s_node	typeref:typename:NODE_NAME
 name	type.h	/^	char *name;$/;"	m	struct:s_id	typeref:typename:char *
@@ -587,7 +518,6 @@ primary_expression	parse.y	/^primary_expression$/;"	l
 print_ast	print.c	/^void print_ast(A_NODE *node)$/;"	f	typeref:typename:void
 print_node	print.c	/^void print_node(A_NODE *node, int s)$/;"	f	typeref:typename:void
 print_space	print.c	/^void print_space(int s)$/;"	f	typeref:typename:void
-printf	test.c	/^int printf(char * format) {$/;"	f	typeref:typename:int
 program	parse.y	/^program$/;"	l
 prt	type.h	/^	BOOLEAN prt; $/;"	m	struct:s_type	typeref:typename:BOOLEAN
 prt_A_ID	print.c	/^void prt_A_ID(A_ID *id, int s)$/;"	f	typeref:typename:void
@@ -610,7 +540,6 @@ s	type.h	/^	typedef union {int i; float f; char c; char *s;} LIT_VALUE;$/;"	m	un
 s_id	type.h	/^typedef struct s_id {$/;"	s
 s_node	type.h	/^typedef struct s_node {$/;"	s
 s_type	type.h	/^typedef struct s_type {$/;"	s
-scanf	test.c	/^int scanf(char * format) {$/;"	f	typeref:typename:int
 searchIdentifier	main.c	/^A_ID				*searchIdentifier(char *s,A_ID *id) {$/;"	f	typeref:typename:A_ID *
 searchIdentifierAtCurrentLevel	main.c	/^A_ID				*searchIdentifierAtCurrentLevel(char *s,A_ID *id) {$/;"	f	typeref:typename:A_ID *
 selection_statement	parse.y	/^selection_statement$/;"	l
@@ -640,7 +569,6 @@ statement_list	parse.y	/^statement_list$/;"	l
 statement_list_opt	parse.y	/^statement_list_opt$/;"	l
 stor	type.h	/^		S_KIND stor;$/;"	m	struct:__anon1f42211d0708	typeref:typename:S_KIND
 storage_class_specifier	parse.y	/^storage_class_specifier$/;"	l
-string	test2.c	/^char *string = "string_literal";$/;"	v	typeref:typename:char *
 string_type	main.c	/^A_TYPE *string_type;$/;"	v	typeref:typename:A_TYPE *
 struct_declaration	parse.y	/^struct_declaration$/;"	l
 struct_declaration_list	parse.y	/^struct_declaration_list$/;"	l
@@ -648,7 +576,7 @@ struct_declarator	parse.y	/^struct_declarator$/;"	l
 struct_declarator_list	parse.y	/^struct_declarator_list$/;"	l
 struct_or_union	parse.y	/^struct_or_union$/;"	l
 struct_type_specifier	parse.y	/^struct_type_specifier$/;"	l
-syntax_err	main.c	/^int syntax_err = 0, line_no = 0, current_level=0;$/;"	v	typeref:typename:int
+syntax_err	main.c	/^int syntax_err = 0, line_no = 1, current_level=0;$/;"	v	typeref:typename:int
 syntax_error	main.c	/^void syntax_error(int i, char *s) {$/;"	f	typeref:typename:void
 translation_unit	parse.y	/^translation_unit$/;"	l
 type	type.h	/^		A_TYPE *type;$/;"	m	struct:__anon1f42211d0708	typeref:typename:A_TYPE *
@@ -661,12 +589,10 @@ type_specifier	parse.y	/^type_specifier$/;"	l
 unary_expression	parse.y	/^unary_expression$/;"	l
 unput	lex.yy.c	/^#define unput(/;"	d	file:
 updateSpecifier	main.c	/^A_SPECIFIER *updateSpecifier(A_SPECIFIER *p,A_TYPE *t,S_KIND s) {$/;"	f	typeref:typename:A_SPECIFIER *
-val	test3.c	/^int val;$/;"	v	typeref:typename:int
 value	type.h	/^	int value;$/;"	m	struct:s_id	typeref:typename:int
 value	type.h	/^	int value;$/;"	m	struct:s_node	typeref:typename:int
 value	type.h	/^	typedef struct lit {int addr; A_TYPE *type; LIT_VALUE value;} A_LITERAL;$/;"	m	struct:lit	typeref:typename:LIT_VALUE
 void_type	main.c	/^A_TYPE *void_type;$/;"	v	typeref:typename:A_TYPE *
-world	test3.c	/^	int world;$/;"	m	struct:hello	typeref:typename:int	file:
 yy_accept	lex.yy.c	/^static const flex_int16_t yy_accept[148] =$/;"	v	typeref:typename:const flex_int16_t[148]	file:
 yy_act	lex.yy.c	/^	int yy_act;$/;"	v	typeref:typename:int
 yy_amount_of_matched_text	lex.yy.c	/^		int yy_amount_of_matched_text = (int) (yy_cp - (yytext_ptr)) - 1;$/;"	v	typeref:typename:int
@@ -695,7 +621,7 @@ yy_did_buffer_switch_on_eof	lex.yy.c	/^static int yy_did_buffer_switch_on_eof;$/
 yy_ec	lex.yy.c	/^static const YY_CHAR yy_ec[256] =$/;"	v	typeref:typename:const YY_CHAR[256]	file:
 yy_fatal_error	lex.yy.c	/^static void yynoreturn yy_fatal_error (const char* msg )$/;"	f	typeref:typename:void yynoreturn	file:
 yy_fill_buffer	lex.yy.c	/^	int yy_fill_buffer;$/;"	m	struct:yy_buffer_state	typeref:typename:int	file:
-yy_flex_debug	lex.yy.c	/^int yy_flex_debug = 1;$/;"	v	typeref:typename:int
+yy_flex_debug	lex.yy.c	/^int yy_flex_debug = 0;$/;"	v	typeref:typename:int
 yy_flex_strlen	lex.yy.c	/^static int yy_flex_strlen (const char * s )$/;"	f	typeref:typename:int	file:
 yy_flex_strncpy	lex.yy.c	/^static void yy_flex_strncpy (char* s1, const char * s2, int n )$/;"	f	typeref:typename:void	file:
 yy_flush_buffer	lex.yy.c	/^    void yy_flush_buffer (YY_BUFFER_STATE  b )$/;"	f	typeref:typename:void
@@ -719,7 +645,6 @@ yy_next_state	lex.yy.c	/^			yy_state_type yy_next_state;$/;"	v	typeref:typename:
 yy_nxt	lex.yy.c	/^	flex_int32_t yy_nxt;$/;"	m	struct:yy_trans_info	typeref:typename:flex_int32_t	file:
 yy_nxt	lex.yy.c	/^static const flex_int16_t yy_nxt[232] =$/;"	v	typeref:typename:const flex_int16_t[232]	file:
 yy_reduce_print	parse.tab.c	/^yy_reduce_print (yy_state_t *yyssp, YYSTYPE *yyvsp, int yyrule)$/;"	f	typeref:typename:void	file:
-yy_rule_linenum	lex.yy.c	/^static const flex_int16_t yy_rule_linenum[58] =$/;"	v	typeref:typename:const flex_int16_t[58]	file:
 yy_scan_buffer	lex.yy.c	/^YY_BUFFER_STATE yy_scan_buffer  (char * base, yy_size_t  size )$/;"	f	typeref:typename:YY_BUFFER_STATE
 yy_scan_bytes	lex.yy.c	/^YY_BUFFER_STATE yy_scan_bytes  (const char * yybytes, int  _yybytes_len )$/;"	f	typeref:typename:YY_BUFFER_STATE
 yy_scan_string	lex.yy.c	/^YY_BUFFER_STATE yy_scan_string (const char * yystr )$/;"	f	typeref:typename:YY_BUFFER_STATE
