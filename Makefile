@@ -6,6 +6,8 @@ T = type.h
 YYLEX = lex.yy.c 
 YYPARSE = parse.tab.c
 PRINT = print.c
+PRINT_SEM = print_sem.c
+SEMANTIC = semantic.c
 MAIN = main.c
 LEX = flex 
 YACC = bison 
@@ -13,7 +15,7 @@ YACC = bison
 # dependencies
 all : $(TARGET)
 
-$(TARGET): $(PRINT) $(MAIN) $(YYLEX) $(YYPARSE)
+$(TARGET): $(SEMANTIC) $(PRINT_SEM) $(PRINT) $(MAIN) $(YYLEX) $(YYPARSE)
 	$(CC) $^ -o $@ -g
 
 $(YYLEX): $(L) $(T)
