@@ -440,6 +440,7 @@ BOOLEAN			isNotSameType(A_TYPE *t1,A_TYPE *t2) {
 	else
 		return t1!=t2;
 }
+/*
 BOOLEAN			isPointerOrArrayType(A_TYPE *t) {
 	if (t && (t->kind == T_POINTER || t->kind == T_ARRAY)) {
 		return TRUE;
@@ -447,7 +448,7 @@ BOOLEAN			isPointerOrArrayType(A_TYPE *t) {
 		return FALSE;
 	}
 }
-
+*/
 void initialize() {
 	// primitive data types
 	int_type=setTypeAndKindOfDeclarator(

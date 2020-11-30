@@ -437,6 +437,7 @@ char_type	main.c	/^A_TYPE *char_type;$/;"	v	typeref:typename:A_TYPE *
 check	type.h	/^	BOOLEAN check;$/;"	m	struct:s_type	typeref:typename:BOOLEAN
 checkForwardReference	main.c	/^void				checkForwardReference() {$/;"	f	typeref:typename:void
 checkIdentifier	lex.yy.c	/^int checkIdentifier(char *s) {$/;"	f	typeref:typename:int
+checkTypeAndConversionLiteral	semantic.c	/^A_LITERAL checkTypeAndConversionLiteral(A_LITERAL result, A_TYPE *t, int ll) {$/;"	f	typeref:typename:A_LITERAL
 clean	Makefile	/^clean:$/;"	t
 clink	type.h	/^	struct s_node *clink;$/;"	m	struct:s_node	typeref:struct:s_node *
 comma_expression	parse.y	/^comma_expression$/;"	l
@@ -444,6 +445,11 @@ compound_statement	parse.y	/^compound_statement$/;"	l
 conditional_expression	parse.y	/^conditional_expression$/;"	l
 constant_expression	parse.y	/^constant_expression$/;"	l
 constant_expression_opt	parse.y	/^constant_expression_opt$/;"	l
+convertCastingConversion	semantic.c	/^A_NODE *convertCastingConversion(A_NODE *node, A_TYPE *t1) {$/;"	f	typeref:typename:A_NODE *
+convertScalarToInteger	semantic.c	/^A_NODE *convertScalarToInteger(A_NODE *node) {$/;"	f	typeref:typename:A_NODE *
+convertUsualAssignmentConversion	semantic.c	/^A_NODE *convertUsualAssignmentConversion(A_TYPE *t1, A_TYPE *node) {$/;"	f	typeref:typename:A_NODE *
+convertUsualBinaryConversion	semantic.c	/^A_TYPE *convertUsualBinaryConversion(A_NODE *node) {$/;"	f	typeref:typename:A_TYPE *
+convertUsualUnaryConversion	semantic.c	/^A_NODE *convertUsualUnaryConversion(A_NODE *node) {$/;"	f	typeref:typename:A_NODE *
 current_id	main.c	/^A_ID *current_id = NIL;$/;"	v	typeref:typename:A_ID *
 current_level	main.c	/^int syntax_err = 0, line_no = 1, current_level=0;$/;"	v	typeref:typename:int
 data	test/test11.c	/^	int data;$/;"	m	struct:node	typeref:typename:int	file:
@@ -495,6 +501,9 @@ func	test/test6.c	/^void func(void) {$/;"	f	typeref:typename:void
 func	test/test7.c	/^void func(void) {$/;"	f	typeref:typename:void
 function_definition	parse.y	/^function_definition$/;"	l
 getIdentifierDeclared	main.c	/^A_ID				*getIdentifierDeclared(char *s) {$/;"	f	typeref:typename:A_ID *
+getPointerFieldIdentifier	semantic.c	/^A_ID *getPointerFieldIdentifier(A_TYPE *t, char *s) {$/;"	f	typeref:typename:A_ID *
+getStructFieldIdentifier	semantic.c	/^A_ID *getStructFieldIdentifier(A_TYPE *t, char *s) {$/;"	f	typeref:typename:A_ID *
+getTypeAndValueOfExpression	semantic.c	/^A_LITERAL getTypeAndValueOfExpression(A_NODE *node)$/;"	f	typeref:typename:A_LITERAL
 getTypeOfStructOrEnumRefIdentifier	main.c	/^A_TYPE			*getTypeOfStructOrEnumRefIdentifier(T_KIND k,char *s,ID_KIND kk) {$/;"	f	typeref:typename:A_TYPE *
 global_address	semantic.c	/^int global_address = 12;$/;"	v	typeref:typename:int
 hello	test/test25.c	/^struct hello {$/;"	s	file:
@@ -508,9 +517,29 @@ initialize	main.c	/^void initialize() {$/;"	f	typeref:typename:void
 initializer	parse.y	/^initializer$/;"	l
 initializer_list	parse.y	/^initializer_list$/;"	l
 int_type	main.c	/^A_TYPE *int_type;$/;"	v	typeref:typename:A_TYPE *
+isAllowableAssignmentConversion	semantic.c	/^BOOLEAN isAllowableAssignmentConversion(A_TYPE *t1, A_TYPE *t2, A_NODE *node) {$/;"	f	typeref:typename:BOOLEAN
+isAllowableCastingConversion	semantic.c	/^BOOLEAN isAllowableCastingConversion(A_TYPE *t1, A_TYPE *t2) {$/;"	f	typeref:typename:BOOLEAN
+isAnyIntegerType	semantic.c	/^BOOLEAN isAnyIntegerType(A_TYPE *t) {$/;"	f	typeref:typename:BOOLEAN
+isArithmeticType	semantic.c	/^BOOLEAN isArithmeticType(A_TYPE *t) {$/;"	f	typeref:typename:BOOLEAN
+isArrayType	semantic.c	/^BOOLEAN isArrayType(A_TYPE *t) {$/;"	f	typeref:typename:BOOLEAN
+isCompatiblePointerType	semantic.c	/^BOOLEAN isCompatiblePointerType(A_TYPE *t1, A_TYPE *t2) {$/;"	f	typeref:typename:BOOLEAN
+isCompatibleType	semantic.c	/^BOOLEAN isCompatibleType(A_TYPE *t1, A_TYPE *t2) {$/;"	f	typeref:typename:BOOLEAN
+isConstantZeroExp	semantic.c	/^BOOLEAN isConstantZeroExp(A_NODE *node) {$/;"	f	typeref:typename:BOOLEAN
+isFloatType	semantic.c	/^BOOLEAN isFloatType(A_TYPE *t) {$/;"	f	typeref:typename:BOOLEAN
+isFunctionType	semantic.c	/^BOOLEAN isFunctionType(A_TYPE *t) {$/;"	f	typeref:typename:BOOLEAN
+isIntType	semantic.c	/^BOOLEAN isIntType(A_TYPE *t) {$/;"	f	typeref:typename:BOOLEAN
+isIntegralType	semantic.c	/^BOOLEAN isIntegralType(A_TYPE *t) {$/;"	f	typeref:typename:BOOLEAN
+isModifiableLvalue	semantic.c	/^BOOLEAN isModifiableLvalue(A_NODE *node) {$/;"	f	typeref:typename:BOOLEAN
 isNotSameFormalParameters	main.c	/^BOOLEAN			isNotSameFormalParameters(A_ID *a,A_ID *b) {$/;"	f	typeref:typename:BOOLEAN
 isNotSameType	main.c	/^BOOLEAN			isNotSameType(A_TYPE *t1,A_TYPE *t2) {$/;"	f	typeref:typename:BOOLEAN
 isPointerOrArrayType	main.c	/^BOOLEAN			isPointerOrArrayType(A_TYPE *t) {$/;"	f	typeref:typename:BOOLEAN
+isPointerOrArrayType	semantic.c	/^BOOLEAN isPointerOrArrayType(A_TYPE *t) {$/;"	f	typeref:typename:BOOLEAN
+isPointerType	semantic.c	/^BOOLEAN isPointerType(A_TYPE *t) {$/;"	f	typeref:typename:BOOLEAN
+isSameParameterType	semantic.c	/^BOOLEAN isSameParameterType(A_ID *a, A_ID *b) {$/;"	f	typeref:typename:BOOLEAN
+isScalarType	semantic.c	/^BOOLEAN isScalarType(A_TYPE *t) {$/;"	f	typeref:typename:BOOLEAN
+isStringType	semantic.c	/^BOOLEAN isStringType(A_TYPE *t) {$/;"	f	typeref:typename:BOOLEAN
+isStructOrUnionType	semantic.c	/^BOOLEAN isStructOrUnionType(A_TYPE *t) {$/;"	f	typeref:typename:BOOLEAN
+isVoidType	semantic.c	/^BOOLEAN isVoidType(A_TYPE *t) {$/;"	f	typeref:typename:BOOLEAN
 iteration_statement	parse.y	/^iteration_statement$/;"	l
 jump_statement	parse.y	/^jump_statement$/;"	l
 kind	type.h	/^	ID_KIND kind;$/;"	m	struct:s_id	typeref:typename:ID_KIND
@@ -628,10 +657,19 @@ s_type	type.h	/^typedef struct s_type {$/;"	s
 searchIdentifier	main.c	/^A_ID				*searchIdentifier(char *s,A_ID *id) {$/;"	f	typeref:typename:A_ID *
 searchIdentifierAtCurrentLevel	main.c	/^A_ID				*searchIdentifierAtCurrentLevel(char *s,A_ID *id) {$/;"	f	typeref:typename:A_ID *
 selection_statement	parse.y	/^selection_statement$/;"	l
+sem_A_TYPE	semantic.c	/^int sem_A_TYPE(A_TYPE *t)$/;"	f	typeref:typename:int
+sem_arg_expr_list	semantic.c	/^void sem_arg_expr_list(A_NODE *node, A_ID *id) {$/;"	f	typeref:typename:void
+sem_declaration	semantic.c	/^int sem_declaration(A_ID *id, int addr)$/;"	f	typeref:typename:int
+sem_declaration_list	semantic.c	/^int sem_declaration_list(A_ID *id, int addr) {$/;"	f	typeref:typename:int
 sem_expression	semantic.c	/^A_TYPE *sem_expression(A_NODE *node)$/;"	f	typeref:typename:A_TYPE *
+sem_for_expression	semantic.c	/^void sem_for_expression(A_NODE *node)$/;"	f	typeref:typename:void
 sem_program	semantic.c	/^void sem_program(A_NODE *node)$/;"	f	typeref:typename:void
+sem_statement	semantic.c	/^int sem_statement(A_NODE *node, int addr, A_TYPE *ret, BOOLEAN sw, BOOLEAN brk, BOOLEAN cnt)$/;"	f	typeref:typename:int
+sem_statement_list	semantic.c	/^int sem_statement_list(A_NODE *node, int addr, A_TYPE *ret, BOOLEAN sw,$/;"	f	typeref:typename:int
 semantic_analysis	semantic.c	/^void semantic_analysis(A_NODE *node)$/;"	f	typeref:typename:void
 semantic_err	semantic.c	/^int semantic_err = 0;$/;"	v	typeref:typename:int
+semantic_error	semantic.c	/^void semantic_error(int i, int ll, char *s)$/;"	f	typeref:typename:void
+semantic_warning	semantic.c	/^void semantic_warning(int i, int ll)$/;"	f	typeref:typename:void
 setDeclaratorElementType	main.c	/^A_ID				*setDeclaratorElementType(A_ID *id,A_TYPE *t) {$/;"	f	typeref:typename:A_ID *
 setDeclaratorInit	main.c	/^A_ID				*setDeclaratorInit(A_ID *id,A_NODE *n) {$/;"	f	typeref:typename:A_ID *
 setDeclaratorKind	main.c	/^A_ID				*setDeclaratorKind(A_ID *id,ID_KIND k) {$/;"	f	typeref:typename:A_ID *

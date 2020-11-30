@@ -1,5 +1,6 @@
 # macro
-TARGET = syntax_analyzer
+TARGET = semantic_analyzer
+TARGET_SYNTAX = syntax_analyzer
 L = lex.l
 Y = parse.y
 T = type.h
@@ -18,6 +19,9 @@ all : $(TARGET)
 $(TARGET): $(SEMANTIC) $(PRINT_SEM) $(PRINT) $(MAIN) $(YYLEX) $(YYPARSE)
 	$(CC) $^ -o $@ -g
 
+$(TARGET_SYNTAX): $(PRINT_SEM) $(PRINT) $(MAIN) $(YYLEX) $(YYPARSE)
+	$(CC) $^ -o $@ -g
+
 $(YYLEX): $(L) $(T)
 	$(LEX) $(L)
 
@@ -25,7 +29,7 @@ $(YYPARSE): $(Y) $(T)
 	$(YACC) $(Y)
 
 clean:
-	$(RM) $(YYLEX) $(YYPARSE) $(TARGET)
+	$(RM) $(YYLEX) $(YYPARSE) $(TARGET) $(TARGET_SYNTAX)
 
 # test macro
 echo:
