@@ -314,7 +314,7 @@ A_TYPE *sem_expression(A_NODE *node)
 			t1 = sem_expression(node->llink);
 			t2 = sem_expression(node->rlink);
 			if (isArithmeticType(t1) && isArithmeticType(t2))
-				result = convertUsualBinaryConversion(t2);
+				result = convertUsualBinaryConversion(node);
 			else if (isPointerType(t1) && isIntegralType(t2))
 				result = t1;
 			else if (isIntegralType(t1) && isPointerType(t2))
