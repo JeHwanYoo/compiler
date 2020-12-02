@@ -338,7 +338,7 @@ void prt_sem_A_ID_LIST(A_ID *id, int s)
 void prt_sem_A_ID_NAME(A_ID *id, int s)
 {
   print_space(s);
-  printf("(ID=\"%s\") TYPE:%x KIND:%s SPEC=%s LEV=%d VAL=%d ADDR=%d\n ", id->name, id->type,
+  printf("(ID=\"%s\") TYPE:%x KIND:%s SPEC=%s LEV=%d VAL=%d ADDR=%d\n", id->name, id->type,
          id_kind_name[id->kind],
          spec_name[id->specifier], id->level,
          id->value, id->address);
@@ -346,7 +346,7 @@ void prt_sem_A_ID_NAME(A_ID *id, int s)
 void prt_sem_A_ID(A_ID *id, int s)
 {
   print_space(s);
-  printf("(ID=\"%s\") TYPE:%x KIND:%s SPEC=%s LEV=%d VAL=%d ADDR=%d\n ", id->name, id->type,
+  printf("(ID=\"%s\") TYPE:%x KIND:%s SPEC=%s LEV=%d VAL=%d ADDR=%d\n", id->name, id->type,
          id_kind_name[id->kind],
          spec_name[id->specifier], id->level,
          id->value, id->address);

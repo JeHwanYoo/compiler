@@ -53,6 +53,10 @@ BOOLEAN			isNotSameFormalParameters(A_ID*,A_ID*);
 BOOLEAN			isNotSameType(A_TYPE*,A_TYPE*);
 BOOLEAN			isPointerOrArrayType(A_TYPE*);
 
+extern int semantic_err;
+void semantic_analysis();
+void print_sem_ast();
+
 int main(int argc, char *argv[])
 {
 	if ((yyin=fopen(argv[argc-1], "r")) == NULL) {
@@ -64,6 +68,14 @@ int main(int argc, char *argv[])
 	if (!syntax_err) {
 		printf("syntax check ok\n");
 		print_ast(root);
+		
+		semantic_analysis(root);
+		if (!semantic_err) {
+			printf("semantic analysis ok\n");
+			print_sem_ast(root);
+		}
+		else printf("the number of error: %d\n", semantic_err);
+
 	}
 	else printf("the number of error: %d\n", syntax_err);
 	exit(0);

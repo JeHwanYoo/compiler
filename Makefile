@@ -19,7 +19,7 @@ all : $(TARGET)
 $(TARGET): $(SEMANTIC) $(PRINT_SEM) $(PRINT) $(MAIN) $(YYLEX) $(YYPARSE)
 	$(CC) $^ -o $@ -g
 
-$(TARGET_SYNTAX): $(PRINT_SEM) $(PRINT) $(MAIN) $(YYLEX) $(YYPARSE)
+$(TARGET_SYNTAX): $(PRINT) $(MAIN) $(YYLEX) $(YYPARSE)
 	$(CC) $^ -o $@ -g
 
 $(YYLEX): $(L) $(T)

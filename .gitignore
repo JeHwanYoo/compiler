@@ -6,4 +6,5 @@ parse.tab.h
 syntax_analyzer
 semantic_analyzer
 test/*
+test2/*
 

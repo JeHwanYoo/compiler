@@ -147,10 +147,10 @@ A_TYPE *sem_expression(A_NODE *node)
 			result = char_type;
 			break;
 		case N_EXP_STRING_LITERAL:
-			lit.type = float_type;
-			lit.value.f = atof(node->clink);
+			lit.type = string_type;
+			lit.value.s = node->clink;
 			node->clink = put_literal(lit, node->line);
-			result = float_type;
+			result = string_type;
 			break;
 		case N_EXP_ARRAY:
 			t1 = sem_expression(node->llink);
@@ -524,10 +524,19 @@ int sem_statement(A_NODE *node, int addr, A_TYPE *ret, BOOLEAN sw, BOOLEAN brk, 
 				semantic_error(74, node->line);
 			break;
 		case N_STMT_BREAK:
-			if (cnt == FALSE)
+			if (brk == FALSE)
 				semantic_error(73, node->line);
 			break;
 		case N_STMT_RETURN:
+			if (node->clink) {
+				t = sem_expression(node->clink);
+				if (isAllowableCastingConversion(ret, t))
+					node->clink = convertCastingConversion(node->clink, ret);
+				else
+					semantic_error(57, node->line);
+			}
+			break;
+		default:
 			semantic_error(90, node->line);
 			break;
 	}
