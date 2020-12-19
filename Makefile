@@ -11,7 +11,7 @@ PRINT_SEM = print_sem.c
 SEMANTIC = semantic.c
 MAIN = main.c
 LEX = flex 
-YACC = bison 
+YACC = bison -d
 
 # dependencies
 all : $(TARGET)
@@ -29,7 +29,7 @@ $(YYPARSE): $(Y) $(T)
 	$(YACC) $(Y)
 
 clean:
-	$(RM) $(YYLEX) $(YYPARSE) $(TARGET) $(TARGET_SYNTAX)
+	$(RM) $(YYLEX) $(YYPARSE) $(TARGET) $(TARGET_SYNTAX) parse.tab.h
 
 # test macro
 echo:
