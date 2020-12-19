@@ -5,6 +5,7 @@ parse.tab.c
 parse.tab.h
 syntax_analyzer
 semantic_analyzer
+code_generation
 test/*
 test2/*
 

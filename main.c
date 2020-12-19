@@ -56,23 +56,38 @@ BOOLEAN			isPointerOrArrayType(A_TYPE*);
 extern int semantic_err;
 void semantic_analysis();
 void print_sem_ast();
+FILE *fout;
 
 int main(int argc, char *argv[])
 {
-	if ((yyin=fopen(argv[argc-1], "r")) == NULL) {
-		printf("can not open input file: %s\n", argv[argc-1]);
+	if (argc < 3) {
+		printf("USAGE: ./code_generation [input.c] [output.asm]\n");
 		exit(1);
 	}
+
+	if ((yyin=fopen(argv[1], "r")) == NULL) {
+		printf("can not open input file: %s\n", argv[1]);
+		exit(1);
+	}
+	
+	if ((fout = fopen(argv[2], "w+")) == NULL) {
+		printf("can not open output file: %s\n", argv[2]);
+		exit(1);
+	}
+
 	initialize();
 	yyparse();
+	// syntax ok
 	if (!syntax_err) {
 		printf("syntax check ok\n");
-		print_ast(root);
+		// print_ast(root);
 		
 		semantic_analysis(root);
+		// semantic ok
 		if (!semantic_err) {
 			printf("semantic analysis ok\n");
-			print_sem_ast(root);
+			// print_sem_ast(root);
+			code_generation(root);
 		}
 		else printf("the number of error: %d\n", semantic_err);
 
