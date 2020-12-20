@@ -970,7 +970,7 @@ logical_or_expression	parse.y	/^logical_or_expression$/;"	l
 main	main.c	/^int main(int argc, char *argv[])$/;"	f	typeref:typename:int
 main	stack-machine/y.tab.c	/^void main(int argc, char *argv[]) $/;"	f	typeref:typename:void
 main	test/test1.asm	/^main:$/;"	l
-main	test/test1.c	/^int main() {$/;"	f	typeref:typename:int
+main	test/test1.c	/^int main(void) {$/;"	f	typeref:typename:int
 main	test/test10.c	/^int main(void) {$/;"	f	typeref:typename:int
 main	test/test11.c	/^int main(void) {$/;"	f	typeref:typename:int
 main	test/test12.c	/^int main(void) {$/;"	f	typeref:typename:int
